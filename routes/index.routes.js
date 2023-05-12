@@ -11,4 +11,11 @@ const authRouter = require("./auth.routes")
 // and use them:
 router.use("/auth", authRouter)
 
+// require our characters routes files:
+const charactersRouter = require("./characters.routes")
+// and use them:
+router.use("/characters", charactersRouter)
+
+
+
 module.exports = router;

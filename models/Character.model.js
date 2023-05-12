@@ -19,12 +19,12 @@ const characterSchema = new Schema(
         enum: ["tatooine", "parnassos", "jakku"]
     },
     age: Number,
-    imageUrl: {
+    image: {
         type: String,
         required: true
     },
     creator: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: "User"
     }
 })

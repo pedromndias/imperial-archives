@@ -1,0 +1,17 @@
+<div class="d-flex flex-column align-items-center">
+
+    <h3>List of Characters</h3>
+
+    <div class="card-body">
+        {{#each this.characters}}
+           <li>{{this}}</li>
+        {{/each}}
+    </div>
+
+    <div class="card-body">
+    <form action="/characters/new">
+        <button class="btn btn-info">Add New Character</button>
+    </form>
+    </div>
+
+</div>

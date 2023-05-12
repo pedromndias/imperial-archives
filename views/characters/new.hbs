@@ -1,0 +1,38 @@
+<div class="d-flex flex-column align-items-center">
+    <div class="card d-flex flex-column align-items-center">
+        <h2>New Character</h2>
+        <div class="card-body">
+            <form action="/characters/new" method="post">
+                <label for="name">Name: </label>
+                <input type="text" name="name" class="form-control">
+                <br>
+                <label for="species">Species: </label>
+                <select name="species" multiple="true" class="form-select"> 
+                       {{#each this.species}}
+                        <option value="{{this}}">{{this}}</option> 
+                       {{/each}}
+                </select>    
+                <br>
+                <label for="homeworld">Homeworld: </label>
+                <select name="homeworld" multiple="true" class="form-select"> 
+                       {{#each this.homeworld}}
+                        <option value="{{this}}">{{this}}</option> 
+                       {{/each}}
+                </select>    
+                <br>
+                <label for="age">Age: </label>
+                <input type="number" name="age" class="form-control">
+                <br>
+                <label for="image" class="form-label">Image:</label>
+                <input type="file" name="image" class="form-control">
+                <br>
+                <button class="btn btn-info">Create</button>
+            </form>
+        </div>
+    </div>
+    <div class="error-message d-flex flex-column align-items-center">
+        {{#if this.errorMessage}}
+            <p style="color: red">{{this.errorMessage}}</p>
+        {{/if}}
+    </div>
+</div>
