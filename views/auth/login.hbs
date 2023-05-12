@@ -1,0 +1,24 @@
+<div class="d-flex flex-column align-items-center">
+    <div class="card d-flex flex-column align-items-center">
+        <h2>Login Form</h2>
+        <div class="card-body">
+            <form action="/auth/login" method="post">
+                {{!-- <label for="username">Username: </label>
+                <input type="text" name="username" class="form-control" autocomplete="off">
+                <br> --}}
+                <label for="email">Email: </label>
+                <input type="email" name="email" class="form-control" value="{{this.foundUser.email}}">
+                <br>
+                <label for="password">Password: </label>
+                <input type="password" name="password" class="form-control">
+                <br>
+                <button class="btn btn-info">Login</button>
+            </form>
+        </div>
+    </div>
+    <div class="error-message d-flex flex-column align-items-center">
+        {{#if this.errorMessage}}
+            <p style="color: red">{{this.errorMessage}}</p>
+        {{/if}}
+    </div>
+</div>

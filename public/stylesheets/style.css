@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+footer,
+.navigation-bar {
+  background-color: #00b7ff;
+  height: 70px;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navigation-bar {
+  list-style-type: none;
+}
+.navigation-bar a {
+  color: white;
+  text-decoration: none;
+}
+
+footer {
+  padding-left: 20px;
+}
+
+.error-message {
+  margin: 20px;
+  width: 400px;
+}
+
+.main-center {
+  width: 600px;
+  margin: auto;
+}
