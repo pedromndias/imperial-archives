@@ -3,8 +3,8 @@
     <h3>List of Characters</h3>
 
     <div class="card-body">
-        {{#each this.characters}}
-           <li>{{this}}</li>
+        {{#each this.capCharacters}}
+           <li><a href="/characters/{{this._id}}/details">{{this.name}}</a></li>
         {{/each}}
     </div>
 

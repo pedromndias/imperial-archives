@@ -38,3 +38,33 @@ footer {
   width: 600px;
   margin: auto;
 }
+
+.char-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.char-card img {
+  width: 150px;
+}
+
+.main-card {
+  width: 300px;
+  margin: 20px;
+}
+.main-card a {
+  background-color: #00b7ff;
+  color: white;
+  text-decoration: none;
+  padding: 40px;
+}
+
+.main-container {
+  max-width: 800px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}

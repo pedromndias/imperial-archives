@@ -100,7 +100,7 @@ router.post("/login", async (req, res, next) => {
         if(foundUser === null) {
             res.render("auth/login.hbs", {
                 // Send email to preview it in input field:
-                foundUser,
+                email,
                 errorMessage: "User does not exist."
             })
             return;
@@ -111,7 +111,7 @@ router.post("/login", async (req, res, next) => {
         // console.log(isPasswordCorrect);
         if (isPasswordCorrect === false) {
             res.render("auth/login.hbs", {
-                foundUser,
+                email,
                 errorMessage: "Password is not correct."                
             })
             return;
@@ -122,7 +122,7 @@ router.post("/login", async (req, res, next) => {
 
         // If the session is correctly saved, we can redirect the user to a private page:
         req.session.save(() => {
-            res.redirect("/")
+            res.redirect("/private/main")
         })
  
     } catch (error) {

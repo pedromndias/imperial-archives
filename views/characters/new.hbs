@@ -4,7 +4,7 @@
         <div class="card-body">
             <form action="/characters/new" method="post">
                 <label for="name">Name: </label>
-                <input type="text" name="name" class="form-control">
+                <input type="text" name="name" class="form-control" value="{{this.name}}">
                 <br>
                 <label for="species">Species: </label>
                 <select name="species" multiple="true" class="form-select"> 
@@ -16,7 +16,7 @@
                 <label for="homeworld">Homeworld: </label>
                 <select name="homeworld" multiple="true" class="form-select"> 
                        {{#each this.homeworld}}
-                        <option value="{{this}}">{{this}}</option> 
+                        <option value="{{this}}">{{this}}</option>
                        {{/each}}
                 </select>    
                 <br>
@@ -33,6 +33,11 @@
     <div class="error-message d-flex flex-column align-items-center">
         {{#if this.errorMessage}}
             <p style="color: red">{{this.errorMessage}}</p>
+        {{/if}}
+    </div>
+    <div class="error-message d-flex flex-column align-items-center">
+        {{#if this.successMessage}}
+            <p style="color: green">{{this.successMessage}}</p>
         {{/if}}
     </div>
 </div>

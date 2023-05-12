@@ -6,7 +6,8 @@ const characterSchema = new Schema(
         type: String,
         required: true,
         unique: true,
-        trim: true
+        trim: true,
+        lowercase: true
     },
     species: {
         type: String,
