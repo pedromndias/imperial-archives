@@ -2,8 +2,11 @@
 const express = require('express');
 const router = express.Router();
 
+// require and destructure the middleware:
+const {isLoggedIn} = require("../middlewares/auth.middlewares")
+
 // GET "/categories/" => Render a list of all categories:
-router.get("/", (req, res, next) => {
+router.get("/", isLoggedIn, (req, res, next) => {
     res.render("categories/list")
 })
 

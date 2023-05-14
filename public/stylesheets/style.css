@@ -68,3 +68,14 @@ footer {
   align-items: center;
   flex-wrap: wrap;
 }
+
+.profile-card {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+.profile-card img {
+  width: 150px;
+  border-radius: 20px;
+}

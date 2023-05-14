@@ -89,6 +89,7 @@ router.post("/login", async (req, res, next) => {
     // Check if all fields are not empty:
     if (email === "" || password === "") {
         res.render("auth/login.hbs", {
+            email,
             errorMessage: "Email and password are mandatory to login."
         })
         return;

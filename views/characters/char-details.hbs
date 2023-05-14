@@ -1,7 +1,7 @@
 <div class="d-flex flex-column align-items-center">
     <div class="card-body char-card">
         <div>
-            <img src="{{this.image}}" alt="{{this.name}}">
+            <img src="{{this.image}}" alt="{{this.name}}" />
         </div>
         <div>
             <h3>{{this.name}}</h3>
@@ -12,5 +12,10 @@
             {{/if}}
         </div>
 
+    </div>
+    <div>
+        <form action="/private/profile/" >
+            <button class="btn btn-info">Add to favorites</button>
+        </form>
     </div>
 </div>

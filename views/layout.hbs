@@ -1,53 +1,55 @@
-<!DOCTYPE html>
 <html lang="en">
 
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>{{appTitle}}</title>
-      <link
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>{{appTitle}}</title>
+        <link
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
             rel="stylesheet"
         />
-      <link rel="stylesheet" href="/stylesheets/style.css" />
-   </head>
+        <link rel="stylesheet" href="/stylesheets/style.css" />
+    </head>
 
-   <body>
-       <ul class="nav nav-tabs navigation-bar">
+    <body>
+        <ul class="nav nav-tabs navigation-bar">
             <li class="nav-item">
                 <a class="nav-link" href="/">Home</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/auth/register">Register</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/auth/login">Access</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/private/main">Main</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/characters">Characters</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/categories/">Categories</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/private/profile">Profile</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/auth/logout">Logout</a>
-            </li>
+                {{#if this.isUserActive}}
+                <li class="nav-item">
+                    <a class="nav-link" href="/private/main">Main</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/characters">Characters</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/categories/">Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/private/profile">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/auth/logout">Logout</a>
+                </li>
+                {{else}}
+                <li class="nav-item">
+                    <a class="nav-link" href="/auth/register">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/auth/login">Login</a>
+                </li>
+                {{/if}}
         </ul>
 
-      {{{body}}}
+        {{{body}}}
 
-      <footer>
+        <footer>
             Made by Santi and Pedro
         </footer>
 
-      <script src="/js/script.js"></script>
-   </body>
+        <script src="/js/script.js"></script>
+    </body>
 
 </html>

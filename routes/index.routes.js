@@ -1,9 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
+// Let's import and destructure the middlewares:
+const {updateLocals} = require("../middlewares/auth.middlewares")
+// And use updateLocals to show specific links on the navbar:
+router.use(updateLocals);
+
 /* GET home page */
 router.get("/", (req, res, next) => {
   res.render("index");
+  // console.log(req.session);
 });
 
 // require our auth routes files:

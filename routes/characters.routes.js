@@ -14,10 +14,11 @@ let speciesArray = ["human", "droid", "rhodian"];
 //*create an array for Homeworlds
 let homeworldArray = ["tatooine", "parnassos", "jakku"];
 
-
+// require and destructure the middleware:
+const {isLoggedIn} = require("../middlewares/auth.middlewares")
 
 //* GET "/characters" => render list of characters
-router.get("/", (req, res, next) => {
+router.get("/", isLoggedIn, (req, res, next) => {
   //* find and render all characters
     Character.find()
   .then(characters => {
@@ -42,7 +43,7 @@ router.get("/", (req, res, next) => {
 });
 
 //* GET "/characters/new" => render form to create a new character
-router.get("/new", (req, res, next) => {
+router.get("/new", isLoggedIn, (req, res, next) => {
     res.render("characters/new",{
         species: speciesArray,
         homeworld: homeworldArray 
@@ -118,7 +119,7 @@ router.post("/new", async (req, res, next) => {
 })
 
 // GET "/characters/:charId/details" => Render specific character by ID:
-router.get("/:charId/details", (req, res, next) => {
+router.get("/:charId/details", isLoggedIn, (req, res, next) => {
     // console.log(req.params.charId);
     Character.findById(req.params.charId)
     .then((singleChar) => {
