@@ -1,22 +1,47 @@
-<div class="d-flex flex-column align-items-center">
-    <div class="card-body char-card">
-        <div>
-            <img src="{{this.singleChar.image}}" alt="{{this.singleChar.name}}" />
-        </div>
-        <div>
-            <h3>{{this.singleChar.name}}</h3>
-            <p>Species: {{this.singleChar.species}}</p>
-            <p>Homeworld: {{this.singleChar.homeworld}}</p>
-            {{#if this.singleChar.age}}
-                <p>Age: {{this.singleChar.age}}</p>
-            {{/if}}
-            <p>Creator: {{this.singleChar.creator.username}}</p>
-        </div>
+<div class="char-details-container">
+    <div class="d-flex flex-column align-items-center">
+        <div class="card-body char-card">
+            <div>
+                <img
+                    src="{{this.singleChar.image}}"
+                    alt="{{this.singleChar.name}}"
+                />
+            </div>
+            <div>
+                <h3>{{this.singleChar.name}}</h3>
+                <p>Species: {{this.singleChar.species}}</p>
+                <p>Homeworld: {{this.singleChar.homeworld}}</p>
+                {{#if this.singleChar.age}}
+                    <p>Age: {{this.singleChar.age}}</p>
+                {{/if}}
+                <p>Creator: {{this.singleChar.creator.username}}</p>
+            </div>
 
+        </div>
+        <div>
+            {{! Create form button to send the character's id to the profile route: }}
+            <form
+                action="/private/profile/{{this.singleChar._id}}"
+                method="post"
+            >
+                <button class="btn btn-info add-fav-btn">Add to favorites</button>
+            </form>
+        </div>
+        <div class="d-flex flex-column align-items-center">
+            <form action="/characters/{{this.singleChar._id}}/details" method="post" class="char-textarea">
+                <label for="comment">Comment:</label>
+                <textarea name="comment" id="" cols="35" rows="5"></textarea>
+                <button class="btn btn-warning add-comment-btn">Add</button>
+            </form>
+
+        </div>
     </div>
-    <div>
-        <form action="/private/profile/{{this.singleChar._id}}" method="post">
-            <button class="btn btn-info">Add to favorites</button>
-        </form>
+    <div class="d-flex flex-column align-items-center comments-section">
+        <h2>Comments:</h2>
+        <ul>
+            {{#each this.allComments}}
+            <p>{{this.content}} - <em>{{this.creator.username}}</em></p>
+            {{/each}}
+        </ul>
     </div>
 </div>

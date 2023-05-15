@@ -3,7 +3,7 @@ const router = express.Router();
 
 // Let's import and destructure the middlewares:
 const {updateLocals} = require("../middlewares/auth.middlewares")
-// And use updateLocals to show specific links on the navbar:
+// And use updateLocals to show specific links on the navbar and show different elements on the pages:
 router.use(updateLocals);
 
 /* GET home page */

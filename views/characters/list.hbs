@@ -8,10 +8,12 @@
         {{/each}}
     </div>
 
-    <div class="card-body">
+    {{#if this.isModerator}}
+    <div>
     <form action="/characters/new">
         <button class="btn btn-info">Add New Character</button>
     </form>
     </div>
+    {{/if}}
 
 </div>
