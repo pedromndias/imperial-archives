@@ -1,20 +1,21 @@
 <div class="d-flex flex-column align-items-center">
     <div class="card-body char-card">
         <div>
-            <img src="{{this.image}}" alt="{{this.name}}" />
+            <img src="{{this.singleChar.image}}" alt="{{this.singleChar.name}}" />
         </div>
         <div>
-            <h3>{{this.name}}</h3>
-            <p>Species: {{this.species}}</p>
-            <p>Homeworld: {{this.homeworld}}</p>
-            {{#if this.age}}
-                <p>Age: {{this.age}}</p>
+            <h3>{{this.singleChar.name}}</h3>
+            <p>Species: {{this.singleChar.species}}</p>
+            <p>Homeworld: {{this.singleChar.homeworld}}</p>
+            {{#if this.singleChar.age}}
+                <p>Age: {{this.singleChar.age}}</p>
             {{/if}}
+            <p>Creator: {{this.singleChar.creator.username}}</p>
         </div>
 
     </div>
     <div>
-        <form action="/private/profile/" >
+        <form action="/private/profile/{{this.singleChar._id}}" method="post">
             <button class="btn btn-info">Add to favorites</button>
         </form>
     </div>

@@ -2,6 +2,9 @@
 const express = require('express');
 const router = express.Router();
 
+// Require the User Model:
+const User = require("../models/User.model");
+
 // require and destructure the middleware:
 const {isLoggedIn} = require("../middlewares/auth.middlewares")
 
@@ -14,21 +17,38 @@ router.get("/main", isLoggedIn, (req, res, next) => {
 
 // GET "/private/profile" => Render user's profile:
 router.get("/profile/", isLoggedIn, (req, res, next) => {
-    console.log(req.session.user);
-    const {username, favoriteCharacter} = req.session.user
-    res.render("private/profile", {
-        username,
-        favoriteCharacter
+    console.log(req.session.user); 
+    User.findById(req.session.user._id)
+    .populate("favoriteCharacter")
+    .then((singleUser) =>{
+        const {username, favoriteCharacter} = singleUser
+        console.log(username, favoriteCharacter)
+        res.render("private/profile", {
+            username,
+            favoriteCharacter
+        })
     })
-    // how to transfer user's info to hbs. Sessions?
+    .catch((err) =>{
+        next(err)
+    })
     
-    // Find by id and render.
     // todo add favorite character when "Add to favorite" button favorite.
 })
 // todo continue investigation to add favorite:
-// router.post("/profile/:character", (req, res, next) => {
-//     console.log(req.params.character)
-// })
+router.post("/profile/:characterId", (req, res, next) => {
+    console.log(req.params.characterId, req.session.user._id)
+    User.findByIdAndUpdate(req.session.user._id, {favoriteCharacter: req.params.characterId})
+    .then(() =>{
+        console.log("Added favourite Character")
+        /* req.session.user.favoriteCharacter = req.params.characterId */ //? Ask jorge 
+        res.redirect("/private/profile/")
+
+    })
+    .catch((error) =>{
+        next(error)
+    })
+
+})
 
 // export it:
 module.exports = router;

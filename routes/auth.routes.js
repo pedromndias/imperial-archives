@@ -25,6 +25,8 @@ router.post("/register", async (req, res, next) => {
         // console.log("Username, email or password are empty");
         // If any field is empty, render the same page but with an error:
         res.render("auth/register.hbs", {
+            username,
+            email,
             errorMessage: "The username, email and password are mandatory"
         })
         // We also need to stop the route:

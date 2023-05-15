@@ -18,9 +18,18 @@ function updateLocals(req, res, next) {
     }
     next() // Continue with the route.
 }
+//todo terminar esto
+/* function isModerator(req, res, next){
+    if(req.session.user.role === "moderator"){
+        next()
+    } else {
+        res.redirect("")
+    }
+} */
 
 // Export our middleware functions:
 module.exports = {
     isLoggedIn,
-    updateLocals
+    updateLocals,
+    /* isModerator */
 }

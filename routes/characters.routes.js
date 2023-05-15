@@ -5,6 +5,9 @@ const router = express.Router();
 // Require the Character model:
 const Character = require("../models/Character.model");
 
+// Require the User Model:
+const User = require("../models/User.model");
+
 // Require capitalize function:
 const capitalize = require("../utils/capitalize")
 
@@ -98,7 +101,8 @@ router.post("/new", async (req, res, next) => {
         species,
         homeworld,
         age,
-        image 
+        image,
+        creator: req.session.user._id
     })
     .then(()=>{
         // console.log("Character created successfully");
@@ -120,22 +124,38 @@ router.post("/new", async (req, res, next) => {
 
 // GET "/characters/:charId/details" => Render specific character by ID:
 router.get("/:charId/details", isLoggedIn, (req, res, next) => {
-    // console.log(req.params.charId);
+    /* console.log(req.params); */
     Character.findById(req.params.charId)
+    .populate("creator")
     .then((singleChar) => {
+        singleChar.name = capitalize(singleChar.name) 
+        console.log(singleChar); 
+        res.render("characters/char-details",{
+          singleChar: singleChar,  
+        })
         // Create new char object with capitalized name:
-        capName = capitalize(singleChar.name)
+        //capName = capitalize(singleChar.name)
         // console.log("Character found!");
         // console.log(capName);
         
+        /* console.log(singleChar); */
+        /* User.findById(singleChar.creator)
+        .then((singleUser)=>{
+            console.log(singleUser);
+            res.render("characters/char-details", {
+                name: capName,
+                species: singleChar.species,
+                homeworld: singleChar.species,
+                age: singleChar.age,
+                image: singleChar.image,
+                creatorName: singleUser.username,
+                charId: singleChar._id 
+            }) */
         
-        res.render("characters/char-details", {
-            name: capName,
-            species: singleChar.species,
-            homeworld: singleChar.species,
-            age: singleChar.age,
-            image: singleChar.image
-        })
+       /*  })
+        .catch((error) => {
+            next(error)
+        }) */
     })
     .catch((err) => {
         next(err)
