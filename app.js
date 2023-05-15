@@ -13,6 +13,11 @@ const express = require("express");
 // https://www.npmjs.com/package/hbs
 const hbs = require("hbs");
 
+// create hbs helper to capitalize words in views
+hbs.registerHelper("capitalize", function(caps){
+    return capitalize(caps)
+})
+
 const app = express();
 
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware

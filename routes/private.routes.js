@@ -28,12 +28,8 @@ router.get("/profile/", isLoggedIn, (req, res, next) => {
         Character.find({creator: req.session.user._id})
         .then((charactersFound) => {
             // console.log(charactersFound); returns an array of characters.
-            // todo Capitalize first letter (does not work)
             const {username, favoriteCharacter} = singleUser
-            if(favoriteCharacter) {
-                favoriteCharacter.name = capitalize(favoriteCharacter.name)
-                console.log(favoriteCharacter.name)
-            }
+            // console.log(favoriteCharacter) 
             res.render("private/profile", {
                 username,
                 favoriteCharacter,
