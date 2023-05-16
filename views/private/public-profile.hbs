@@ -1,0 +1,60 @@
+<div class="d-flex flex-column align-items-center">
+    <h2>{{this.singleUser.username}}'s Profile</h2>
+    <div class="card-body profile-card">
+        <img src="https://vignette.wikia.nocookie.net/fr.starwars/images/3/32/Dark_Vador.jpg" alt="{{this.username}}">
+        <h3>{{this.singleUser.username}}</h3>
+        {{#if this.isRoleModerator}}
+        <p>Moderator 😎</p>
+        {{else if this.isRoleAdmin}}
+        <p>Admin 🤴</p>
+        {{else}}
+        <p>Rookie 🤖</p>
+        {{/if}}
+    </div>
+    <div class="profile-main-container">
+        {{#if this.isRoleModerator}}
+        <div class="d-flex align-items-center created-chars">
+            
+            <h2>My created character:</h2>
+            {{#if this.charactersFound}}
+            <ul>
+                {{#each this.charactersFound}}
+                <div class="card-body each-added-character">
+                    <a href="/characters/{{this._id}}/details">
+                        <h5>{{capitalize this.name}}</h5>
+                        <img src="{{this.image}}" alt="{{this.name}}">
+                    </a>
+                </div>
+                
+                {{/each}}
+            </ul>
+            {{else}} <p>You didn't create any characters yet</p>
+            {{/if}}
+        </div>
+        {{!-- todo Add content to substitute the added characters feature. --}}
+        {{/if}}
+        {{#unless this.isRoleAdmin}}
+        <div class="fav-char-container card-body d-flex flex-column align-items-center">
+        <h2>Favorite Character: </h2>
+        {{#if this.singleUser.favoriteCharacter}}
+        <div class="fav-char d-flex flex-column align-items-center card-body">
+            <a class="fav-char-link" href="/characters/{{this.singleUser.favoriteCharacter._id}}/details">
+                <img src="{{this.singleUser.favoriteCharacter.image}}" alt="img">
+                <h4>{{this.singleUser.favoriteCharacter.name}}</h4>
+            </a>
+        </div>
+        {{/if}}
+        {{/unless}}
+        
+    </div>
+    {{#if this.isAdmin}}
+        {{#if this.isRoleUser}}
+        <div class="fav-char-container card-body d-flex flex-column align-items-center">
+            <form action="/admin/{{this.singleUser._id}}/delete-user" method="post">
+                <button class="btn btn-danger">Delete User</button>
+            </form>
+        </div>
+        {{/if}}
+    {{/if}}
+    </div>
+</div>

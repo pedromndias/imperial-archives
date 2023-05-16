@@ -1,0 +1,10 @@
+<div class="d-flex flex-column align-items-center">
+    <h2>List of all users:</h2>
+    <ul>
+        {{#each this.allUsers}}
+            <li>
+                <a href="/private/{{this._id}}/public-profile">{{this.username}}</a>
+            </li>
+        {{/each}}
+    </ul>
+</div>

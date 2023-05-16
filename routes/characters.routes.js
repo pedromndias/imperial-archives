@@ -145,21 +145,36 @@ router.get("/:charId/details", isLoggedIn, (req, res, next) => {
     // Populate with the creator (User model relation)
     .populate("creator")
     .then((singleChar) => {
+        // console.log(singleChar)
         // Capitalize first letter of the character's name:
-        singleChar.name = capitalize(singleChar.name) 
-        // console.log(singleChar);
+        // singleChar.name = capitalize(singleChar.name) 
+        console.log(singleChar);
 
         // Search all comments for this character:
         Comment.find({character: req.params.charId})
         // Populate our 2 relations:
         .populate("creator")
         .then((allComments) => {
-            // console.log("Comments found:", allComments)
+            // Clone array to modify it:
+            let clonedAllComments = JSON.parse(JSON.stringify(allComments))
+            // Add a special variable isOwnComment so know if the owner of the comment is logged in and then can delete the comment:
+            clonedAllComments.forEach((eachComment) => {
+                if (eachComment.creator._id === req.session.user._id) {
+                    eachComment.isOwnComment = true
+                }
+                // If the logged in user is admin or moderator, they can delete any comments:
+                if (req.session.user.role === "moderator" || req.session.user.role === "admin") {
+                    eachComment.canDeleteComment = true;
+                }
+            })
+            
+            // console.log("Comments found:", clonedAllComments)
             res.render("characters/char-details",{
                 // render the character's object and the array of comments:
                 singleChar: singleChar,
-                allComments: allComments
-              })
+                allComments: clonedAllComments,
+                
+            })
         })
         .catch((err) => {
             next(err)
@@ -172,7 +187,7 @@ router.get("/:charId/details", isLoggedIn, (req, res, next) => {
     })
 })
 
-// POST => Get info from comment text area and render the page with new comment:
+// POST "characters/:charId/details" => Get info from comment text area and render the page with new comment:
 router.post("/:charId/details", (req, res, next) => {
     // console.log(req.params.charId)
     // console.log(req.body.comment);
@@ -185,6 +200,25 @@ router.post("/:charId/details", (req, res, next) => {
     .then(() => {
         //console.log("Comment created.")
         res.redirect(`/characters/${req.params.charId}/details`)
+    })
+    .catch((err) => {
+        next(err)
+    })
+})
+
+// GET "characters/:commentId" => ??
+// router.get("/:commentId", (req, res, next) => {
+//     res.redirect("/characters/6463740822c46730d6ef58ad/details")
+// })
+
+// POST "characters/:commentId" => Get info from comment id, delete it and render character's page without it:
+router.post("/:commentId", (req, res, next) => {
+    // console.log(req.params.commentId)
+    // todo don't nest then-catch
+    Comment.findByIdAndDelete(req.params.commentId)
+    .then((singleComment) => {
+        console.log(singleComment.character)
+        res.redirect(`/characters/${singleComment.character}/details`)
     })
     .catch((err) => {
         next(err)

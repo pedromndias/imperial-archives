@@ -1,6 +1,13 @@
 <div class="d-flex flex-column align-items-center">
     <h1>{{appTitle}} 🚀</h1>
+    {{#if this.isUserActive}}
+    <form action="/private/main">
+        <button class="btn btn-info">See all the Characters!</button>
+    </form>
+    {{else}}
     <form action="/auth/register">
         <button class="btn btn-info">Register!</button>
     </form>
+    {{/if}}
+    
 </div>

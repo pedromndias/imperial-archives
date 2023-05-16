@@ -32,5 +32,9 @@ const categoriesRouter = require("./categories.routes")
 // and use them:
 router.use("/categories", categoriesRouter)
 
+// require our admin routes files:
+const adminRouter = require("./admin.routes")
+// and use them:
+router.use("/admin", adminRouter)
 
 module.exports = router;

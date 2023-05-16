@@ -30,6 +30,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/private/profile">Profile</a>
                 </li>
+                {{#if this.isAdmin}}
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/users-list">All Users</a>
+                </li>
+                {{/if}}
                 <li class="nav-item">
                     <a class="nav-link" href="/auth/logout">Logout</a>
                 </li>

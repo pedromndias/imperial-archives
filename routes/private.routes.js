@@ -10,6 +10,7 @@ const Character = require("../models/Character.model");
 // require and destructure the middleware:
 const {isLoggedIn} = require("../middlewares/auth.middlewares");
 const capitalize = require('../utils/capitalize');
+const { single } = require('../middlewares/uploader');
 
 // GET "/private/main" => Render 2 cards with links for Chategories and Categories:
 // Note the middleware isLoggedIn that verifies if there is a req.session.user.
@@ -66,6 +67,51 @@ router.post("/profile/:characterId", (req, res, next) => {
     })
 
 })
+
+// GET "/private/:userId/public-profile" => Render profile of any user:
+router.get("/:userId/public-profile", (req, res, next) => {
+    console.log(req.params.userId)
+    User.findById(req.params.userId)
+    .populate("favoriteCharacter")
+    .then((singleUser) => {
+        console.log(singleUser)
+        // Search which characters that singleUser created:
+        Character.find({creator: singleUser._id})
+        .then((charactersFound) => {
+            console.log(charactersFound)
+            // Create variables for the role:
+            let isRoleModerator = false;
+            let isRoleAdmin = false;
+            let isRoleUser = true;
+            if(singleUser.role === "moderator") {
+                isRoleModerator = true;
+                isRoleAdmin = false;
+                isRoleUser = false;
+            } else if(singleUser.role === "admin") {
+                isRoleModerator = false;
+                isRoleAdmin = true;
+                isRoleUser = false;
+            }
+            
+            res.render("private/public-profile", {
+                singleUser: singleUser,
+                isRoleModerator,
+                isRoleAdmin,
+                isRoleUser,
+                charactersFound
+            })
+        })
+        .catch((err) => {
+            next(err)
+        })
+        
+    })
+    .catch((err) => {
+        next(err)
+    })
+})
+
+
 
 // export it:
 module.exports = router;
