@@ -12,14 +12,17 @@ const Comment = require("../models/Comment.model");
 // require the uploader middleware (for the Cloudinary features)
 const uploader = require("../middlewares/uploader")
 
+
+
 // Require capitalize function:
 const capitalize = require("../utils/capitalize")
 
-//* create an array for species
-let speciesArray = ["human", "droid", "rhodian"];
+//* Require species array in .json utils
+ let speciesArray = require("../utils/species.json"); 
 
-//*create an array for Homeworlds
-let homeworldArray = ["tatooine", "parnassos", "jakku"];
+ //* Require homeworld array in .json utils
+ let homeworldArray = require("../utils/homeworld.json")
+ 
 
 // require and destructure the middleware:
 const {isLoggedIn, isModerator} = require("../middlewares/auth.middlewares")
@@ -51,10 +54,11 @@ router.get("/", isLoggedIn, (req, res, next) => {
 
 //* GET "/characters/new" => render form to create a new character
 router.get("/new", isLoggedIn, isModerator, (req, res, next) => {
-    res.render("characters/new",{
+     res.render("characters/new",{
         species: speciesArray,
         homeworld: homeworldArray
-    });
+    }); 
+    
 })
 
 //* POST "/characters" => create a new character

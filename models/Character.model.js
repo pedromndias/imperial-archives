@@ -1,5 +1,9 @@
 const { Schema, model } = require("mongoose");
 
+let speciesArray = require("../utils/species.json"); 
+
+let homeworldArray = require("../utils/homeworld.json")
+
 const characterSchema = new Schema(
 {
     name: {
@@ -12,12 +16,12 @@ const characterSchema = new Schema(
     species: {
         type: String,
         required: true,
-        enum: ["human", "droid", "rhodian"]
+        enum: speciesArray
     },
     homeworld: {
         type: String,
         required: true,
-        enum: ["tatooine", "parnassos", "jakku"]
+        enum: homeworldArray
     },
     age: Number,
     image: {

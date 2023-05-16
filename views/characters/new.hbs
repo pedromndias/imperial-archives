@@ -7,16 +7,16 @@
                 <input type="text" name="name" class="form-control" value="{{this.name}}">
                 <br>
                 <label for="species">Species: </label>
-                <select name="species" multiple="true" class="form-select"> 
+                <select name="species" class="form-select"> 
                        {{#each this.species}}
-                        <option value="{{this}}">{{this}}</option> 
+                        <option value="{{this}}">{{capitalize this}}</option> 
                        {{/each}}
                 </select>    
                 <br>
                 <label for="homeworld">Homeworld: </label>
-                <select name="homeworld" multiple="true" class="form-select"> 
+                <select name="homeworld" class="form-select"> 
                        {{#each this.homeworld}}
-                        <option value="{{this}}">{{this}}</option>
+                        <option value="{{this}}">{{capitalize this}}</option>
                        {{/each}}
                 </select>    
                 <br>
