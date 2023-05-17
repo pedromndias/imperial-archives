@@ -38,6 +38,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/auth/logout">Logout</a>
                 </li>
+                <p class="nav-item">Logged as: {{this.username}}</p>
                 {{else}}
                 <li class="nav-item">
                     <a class="nav-link" href="/auth/register">Register</a>
@@ -51,7 +52,8 @@
         {{{body}}}
 
         <footer>
-            Made by Santi and Pedro
+            <p>Made by Santi and Pedro</p>
+            <p>Imperial Archives &copy; </p> 
         </footer>
 
         <script src="/js/script.js"></script>
