@@ -15,9 +15,9 @@
             {{#if this.isModerator}}
             <h3>My created character:</h3>
             {{#if this.charactersFound}}
-                <ul>
+                <div class="added-character">
                     {{#each this.charactersFound}}
-                        <a href="/characters/{{this._id}}/details">
+                        <a href="/characters/{{this._id}}/details" >
                             <h5>{{capitalize this.name}}</h5>
                             <img
                                 src="{{this.image}}"
@@ -25,7 +25,7 @@
                             />
                         </a>
                     {{/each}}
-                </ul>
+                </div>
             {{else}}
                 <p>You didn't create any characters yet</p>
             {{/if}}
