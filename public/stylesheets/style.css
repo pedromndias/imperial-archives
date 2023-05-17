@@ -1,6 +1,13 @@
+@font-face {
+  font-family: 'Star jedi';
+  src: url('../fonts/starjedi/Starjedi.ttf') format('truetype');
+}
+
+
 body {
   margin: 0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; 
+  font-family: 'Star jedi', sans-serif;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -13,30 +20,53 @@ body {
 
 footer,
 .navigation-bar {
+  letter-spacing: 0.1em;
+  font-size: 18px;
   background-color: #00b7ff;
   background-image: url("../images/space-background.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 70px;
-  color: gold;
+  color: white;
   display: flex;
   align-items: center;
   gap: 20px;
   flex-wrap: wrap;
 }
 
+.nav-order-items{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.nav-order-items div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+
+}
+
 .navigation-bar {
   list-style-type: none;
 }
 .navigation-bar a {
-  color: white;
+  color: gold;
   text-decoration: none;
   margin: auto;
 }
 
 footer {
   padding-left: 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+footer p{
+  margin-right: 10px;
 }
 
 .error-message {
