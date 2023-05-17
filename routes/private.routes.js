@@ -111,7 +111,15 @@ router.get("/:userId/public-profile", (req, res, next) => {
     })
 })
 
+// GET "/private/films" => Render all films:
+router.get("/films", (req, res, next) => {
+    res.render("private/films")
+})
 
+// GET "/private/series" => Render all series:
+router.get("/series", (req, res, next) => {
+    res.render("private/series")
+})
 
 // export it:
 module.exports = router;
