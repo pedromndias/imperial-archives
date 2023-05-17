@@ -1,16 +1,18 @@
-<div class="d-flex flex-column align-items-center">
+<div class="characters-list-container">
 
-    <h2>List of Characters</h2>
-            <div class="added-character">
+    
+            <div class="added-character-list">
+                <h2>List of Characters</h2>
+                <div class="added-character">
             {{#each this.capCharacters}}
             <a href="/characters/{{this._id}}/details">
                         <h5>{{capitalize this.name}}</h5>
                         <img src="{{this.image}}" alt="{{this.name}}" />
                     </a>
             {{/each}}
+                </div>
+                
             </div>
-
-    
 
     {{#if this.isModerator}}
         <div>
