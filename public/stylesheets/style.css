@@ -84,26 +84,40 @@ footer {
 }
 .profile-main-container h2{
   text-align: center;
+  margin-top: 20px;
 }
 .profile-container {
   display: flex;
   max-width: 1200px;
   margin: 0 auto 200px auto;
+  gap: 20px;
 }
 
+.profile-card {
+  margin-right: 200px;
+}
 
-.each-added-character {
+.created-chars {
+  margin-right: 50px;
+}
+
+.added-character a{
   margin: 5px;
-}
-.each-added-character a{
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items:baseline;
   gap: 10px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  text-decoration: none;
+  padding-left: 5px;
+  padding-top: 3px;
+}
+.added-character a:hover {
+  background-color: lightgray;
 }
 
-.each-added-character img {
-  width: 30px;
+.added-character img {
+  width: 20px;
   border-radius: 10px;
 }
 

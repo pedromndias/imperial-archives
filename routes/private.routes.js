@@ -30,7 +30,7 @@ router.get("/profile/", isLoggedIn, (req, res, next) => {
         .then((charactersFound) => {
             // console.log(charactersFound); returns an array of characters.
             const {username, favoriteCharacter} = singleUser
-            // console.log(favoriteCharacter) 
+            // console.log(favoriteCharacter)
             res.render("private/profile", {
                 username,
                 favoriteCharacter,
