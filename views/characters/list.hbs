@@ -1,10 +1,10 @@
 <div class="d-flex flex-column align-items-center">
 
-    <h3>List of Characters</h3>
+    <h2>List of Characters</h2>
 
     <div class="card-body">
         {{#each this.capCharacters}}
-           <li><a href="/characters/{{this._id}}/details">{{this.name}}</a></li>
+           <p class="char-list-each"><a href="/characters/{{this._id}}/details">{{this.name}}</a></p>
         {{/each}}
     </div>
 

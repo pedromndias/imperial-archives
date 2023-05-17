@@ -1,12 +1,13 @@
-<div class="d-flex flex-column align-items-center">
+<div class="homeworlds">
 
-    <h3>Homeworlds</h3>
-    <ul>
+    <h2>Homeworlds</h2>
+    
         {{#each this.homeworldsList}}
         <a href="/categories/{{this}}/homeworlds-list">
-        <li>{{capitalize this}}</li>
+        {{capitalize this}}
         </a>
+        
         {{/each}}
-    </ul>
+    
 
 </div>

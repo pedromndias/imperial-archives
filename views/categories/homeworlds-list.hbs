@@ -1,13 +1,13 @@
 <div class="d-flex flex-column align-items-center">
-  <h3>List of Characters from {{ capitalize this.oneHomeworld}}</h3>
-  <ul>
+  <h2>List of Characters from {{ capitalize this.oneHomeworld}}</h2>
+  <div class="all-homeworlds-cards">
     {{#each this.allCharByHomeworld}}
-      <div class="card-body each-added-character">
+      <div class="each-homeworld">
         <a href="/characters/{{this._id}}/details">
           <h5>{{capitalize this.name}}</h5>
           <img src="{{this.image}}" alt="{{this.name}}" />
         </a>
       </div>
     {{/each}}
-  </ul>
+  </div>
 </div>
