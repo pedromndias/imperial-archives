@@ -2,49 +2,46 @@
     <h2>{{this.username}}'s Profile</h2>
     <div class="profile-container">
         <div class="profile-card">
-        <img src="https://vignette.wikia.nocookie.net/fr.starwars/images/3/32/Dark_Vador.jpg" alt="{{this.username}}">
-                {{#if this.isModerator}}
-                    <p>Moderator 😎</p>
-                {{else if this.isAdmin}}
-                    <p>Admin 🤴</p>
-                {{else}}
-                    <p>Rookie 🤖</p>
-                {{/if}}
+            <img
+                src="https://vignette.wikia.nocookie.net/fr.starwars/images/3/32/Dark_Vador.jpg"
+                alt="{{this.username}}"
+            />
+            {{#if this.isModerator}}
+                <p>Moderator 😎</p>
+            {{else if this.isAdmin}}
+                <p>Admin 🤴</p>
+            {{else}}
+                <p>Rookie 🤖</p>
+            {{/if}}
         </div>
         <div class="created-chars">
             {{#if this.isModerator}}
-            <h3>My created characters:</h3>
-            {{#if this.charactersFound}}
-                <div class="added-character">
-                    {{#each this.charactersFound}}
-                        <a href="/characters/{{this._id}}/details" >
-                            <h5>{{capitalize this.name}}</h5>
-                            <img
-                                src="{{this.image}}"
-                                alt="{{this.name}}"
-                            />
-                        </a>
-                    {{/each}}
-                </div>
-            {{else}}
-                <p>You didn't create any characters yet</p>
-            {{/if}}
+                <h3>My created characters:</h3>
+                {{#if this.charactersFound}}
+                    <div class="added-character">
+                        {{#each this.charactersFound}}
+                            <a href="/characters/{{this._id}}/details">
+                                <h5>{{capitalize this.name}}</h5>
+                                <img src="{{this.image}}" alt="{{this.name}}" />
+                            </a>
+                        {{/each}}
+                    </div>
+                {{else}}
+                    <p>You didn't create any characters yet</p>
+                {{/if}}
             {{/if}}
         </div>
 
         <div class="fav-char">
             <h3>Favorite Character: </h3>
             {{#if this.favoriteCharacter}}
-            <a
-                class="fav-char-link"
-                href="/characters/{{this.favoriteCharacter._id}}/details"
-            >
-                <img
-                    src="{{this.favoriteCharacter.image}}"
-                    alt="img"
-                />
-                <h4>{{capitalize this.favoriteCharacter.name}}</h4>
-            </a>
+                <a
+                    class="fav-char-link"
+                    href="/characters/{{this.favoriteCharacter._id}}/details"
+                >
+                    <img src="{{this.favoriteCharacter.image}}" alt="img" />
+                    <h4>{{capitalize this.favoriteCharacter.name}}</h4>
+                </a>
             {{/if}}
         </div>
     </div>

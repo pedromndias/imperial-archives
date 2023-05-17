@@ -1,5 +1,5 @@
 <div class="d-flex flex-column align-items-center">
-    <div class="card d-flex flex-column align-items-center">
+    <div class="create-char-container">
         <h2>New Character</h2>
         <div class="card-body">
             <form action="/characters/new" method="post" enctype="multipart/form-data">
@@ -27,14 +27,18 @@
                 <input type="file" name="image" class="form-control">
                 <br>
                 <button class="btn btn-info">Create</button>
+                <div class="error-message d-flex flex-column align-items-center">
+                    {{#if this.errorMessage}}
+                        <p style="color: red">{{this.errorMessage}}</p>
+                    {{/if}}
+                </div>
             </form>
         </div>
     </div>
-    <div class="error-message d-flex flex-column align-items-center">
-        {{#if this.errorMessage}}
-            <p style="color: red">{{this.errorMessage}}</p>
-        {{/if}}
-    </div>
+    <form action="/characters">
+        <button class="btn btn-danger cancel-create-btn">Cancel</button>
+    </form>
+    
     {{!-- <div class="error-message d-flex flex-column align-items-center">
         {{#if this.successMessage}}
             <p style="color: green">{{this.successMessage}}</p>

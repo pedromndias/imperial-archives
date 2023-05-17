@@ -19,38 +19,38 @@
                 {{#each this.charactersFound}}
                     <a href="/characters/{{this._id}}/details">
                         <h5>{{capitalize this.name}}</h5>
-                        <img src="{{this.image}}" alt="{{this.name}}">
+                        <img src="{{this.image}}" alt="{{this.name}}"/>
                     </a>
                 {{/each}}
             </div>
-            {{else}} <p>You didn't create any characters yet</p>
+            {{else}}
+                <p>You didn't create any characters yet</p>
             {{/if}}
-        </div>
+        
             {{!-- todo Add content to substitute the added characters feature. --}}
             {{/if}}
+        </div>
             {{#unless this.isRoleAdmin}}
-            <div class="fav-char-container card-body d-flex flex-column align-items-center">
+            <div class="fav-char">
             <h3>Favorite Character: </h3>
             {{#if this.singleUser.favoriteCharacter}}
-            <div class="fav-char">
-                <a href="/characters/{{this.singleUser.favoriteCharacter._id}}/details">
+                <a class="fav-char-link" href="/characters/{{this.singleUser.favoriteCharacter._id}}/details">
                     <img src="{{this.singleUser.favoriteCharacter.image}}" alt="img">
                     <h4>{{capitalize this.singleUser.favoriteCharacter.name}}</h4>
                 </a>
-            </div>
             {{/if}}
             {{/unless}}
             
         </div>
         {{#if this.isAdmin}}
             {{#if this.isRoleUser}}
-            <div class="fav-char-container card-body d-flex flex-column align-items-center">
+            <div class="">
                 <form action="/admin/{{this.singleUser._id}}/delete-user" method="post">
-                    <button class="btn btn-danger">Delete User</button>
+                    <button class="btn btn-danger">Delete user</button>
                 </form>
             </div>
             {{/if}}
         {{/if}}
-        </div>
+        
     </div>
 </div>
