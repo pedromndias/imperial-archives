@@ -1,13 +1,14 @@
 <div class="d-flex flex-column align-items-center">
-  <h3>List of {{ capitalize this.oneSpecies}}s</h3>
-  <ul>
+  <h2>List of {{ capitalize this.oneSpecies}}s</h2>
+  <div class="all-species-cards">
     {{#each this.allCharBySpecies}}
-      <div class="card-body each-added-character">
-        <a href="/characters/{{this._id}}/details">
-          <h5>{{capitalize this.name}}</h5>
-          <img src="{{this.image}}" alt="{{this.name}}" />
-        </a>
-      </div>
+        <div class="each-species">
+          <a href="/characters/{{this._id}}/details">
+            <h5>{{capitalize this.name}}</h5>
+            <img src="{{this.image}}" alt="{{this.name}}" />
+          </a>
+        </div>
     {{/each}}
-  </ul>
+  </div>
+    
 </div>

@@ -13,7 +13,7 @@
         </div>
         <div class="created-chars">
             {{#if this.isModerator}}
-            <h3>My created character:</h3>
+            <h3>My created characters:</h3>
             {{#if this.charactersFound}}
                 <div class="added-character">
                     {{#each this.charactersFound}}
@@ -43,7 +43,7 @@
                     src="{{this.favoriteCharacter.image}}"
                     alt="img"
                 />
-                <h4>{{this.favoriteCharacter.name}}</h4>
+                <h4>{{capitalize this.favoriteCharacter.name}}</h4>
             </a>
             {{/if}}
         </div>
