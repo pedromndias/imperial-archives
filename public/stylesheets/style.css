@@ -18,6 +18,7 @@ body {
   background-size: cover;
 }
 
+
 footer,
 .navigation-bar {
   letter-spacing: 0.1em;
@@ -313,4 +314,8 @@ footer p{
 .each-homeworld a img {
   width: 130px;
   height: 130px;
+}
+
+input {
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }

@@ -10,9 +10,7 @@ function isLoggedIn(req, res, next) {
 // Let's create a middleware function that updates the links we can see on the navbar (locals), depending on if the user is logged in or not.
 // It creates a variable accessible in Handlebars and will be accessible in all routes.
 function updateLocals(req, res, next) {
-
-    res.locals.userLogged = req.session.user.username
-    
+  
     // Verify if the user is logged in:
     if (req.session.user === undefined) {
         res.locals.isUserActive = false
@@ -24,6 +22,7 @@ function updateLocals(req, res, next) {
         } else if (req.session.user.role === "admin"){
             res.locals.isAdmin = true;
         }
+        res.locals.userLogged = req.session.user.username
     }
     next() // Continue with the route.
 }
