@@ -1,0 +1,47 @@
+<div class="d-flex flex-column align-items-center">
+    <div class="create-char-container">
+        <h2>update {{capitalize this.singleChar.name}}</h2>
+        <div class="card-body">
+            <form action="/characters/{{this.singleChar._id}}/edit-character" method="post">
+                <label for="name">Name: </label>
+                <input type="text" name="name" class="form-control" value="{{capitalize this.singleChar.name}}">
+                <br>
+                <label for="species">Species: </label>
+                <select name="species" class="form-select">
+                    {{!-- Let's use a hbs helper to compare each species from the species array with the singleChar-species --}}
+                       {{#each this.species}}
+                       {{#if (compare this ../this.singleChar.species)}}
+                        <option value="{{this}}" selected>{{capitalize this}}</option>
+                        {{else}}
+                        <option value="{{this}}">{{capitalize this}}</option>
+                        {{/if}}
+                       {{/each}}
+                </select>    
+                <br>
+                <label for="homeworld">Homeworld: </label>
+                <select name="homeworld" class="form-select"> 
+                       {{#each this.homeworld}}
+                       {{#if (compare this ../this.singleChar.homeworld)}}
+                        <option value="{{this}}" selected>{{capitalize this}}</option>
+                        {{else}}
+                        <option value="{{this}}">{{capitalize this}}</option>
+                        {{/if}}
+                       {{/each}}
+                </select>    
+                <br>
+                <label for="age">Age: </label>
+                <input type="number" name="age" class="form-control" value="{{this.singleChar.age}}">
+                <br>
+                <button class="btn btn-info">update</button>
+                <div class="error-message d-flex flex-column align-items-center">
+                    {{#if this.errorMessage}}
+                        <p style="color: red">{{this.errorMessage}}</p>
+                    {{/if}}
+                </div>
+            </form>
+        </div>
+    </div>
+    <form action="/characters/{{this.singleChar._id}}/details">
+        <button class="btn btn-danger cancel-create-btn">Cancel</button>
+    </form>
+</div>

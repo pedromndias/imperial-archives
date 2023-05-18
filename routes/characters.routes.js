@@ -12,8 +12,6 @@ const Comment = require("../models/Comment.model");
 // require the uploader middleware (for the Cloudinary features)
 const uploader = require("../middlewares/uploader")
 
-
-
 // Require capitalize function:
 const capitalize = require("../utils/capitalize")
 
@@ -155,10 +153,92 @@ router.get("/:charId/edit-image", isLoggedIn, (req, res, next) =>{
 
 
 //* POST "/characters/:charId/edit-image" => update image of char by ID
-router.post("/:charId/edit-image", isLoggedIn, (req, res, next) =>{
-    console.log(req.file)
-    console.log(req.body)
+router.post("/:charId/edit-image", isLoggedIn, uploader.single("image"), (req, res, next) =>{
+    // console.log(req.file)
+    // console.log(req.body)
+    // console.log(req.params.charId)
+    
+    //* Validations:
+    Character.findById(req.params.charId)
+    .then((singleChar) => {
+        // If no image, redirect to the same page with an error:
+        if (req.body.image === "" || req.file === undefined) {
+            res.render("characters/edit-image", {
+                singleChar: singleChar,
+                errorMessage: "Please upload an image"
+            })
+            return;
+        }
+        // If all good, we update the character's image:
+        Character.findByIdAndUpdate(req.params.charId, {
+            image: req.file.path
+        })
+        .then(() => {
+            // console.log("Image updated")
+            res.redirect(`/characters/${req.params.charId}/details`)
+        })
+        .catch((err) => {
+            next(err)
+        })
+    })
+    .catch((err) => {
+        next(err)
+    })
+})
 
+//* GET "/characters/:charId/edit-character" => show form to update character details by its ID
+router.get("/:charId/edit-character", (req, res, next) => {
+    // console.log(req.params)
+    // Let's find the character by its id and render:
+    Character.findById(req.params.charId)
+    .then((singleChar) => {
+        res.render("characters/edit-character", {
+            singleChar: singleChar,
+            species: speciesArray,
+            homeworld: homeworldArray
+        })
+    })
+    .catch((err) => {
+        next(err)
+    })
+})
+
+//* POST "/characters/:charId/edit-character" => update character details by its ID
+router.post("/:charId/edit-character", (req, res, next) => {
+    // Check what returns from the view:
+    // console.log(req.body);
+    // console.log(req.params.charId)
+    // Destructure the req.body:
+    const {name, species, homeworld, age} = req.body
+
+    // Get our singleChar object:
+    Character.findById(req.params.charId)
+    .then((singleChar)=> {
+        //* Validations:
+        if(name === "" || species === "" || homeworld === "" || age === "") {
+            res.render("characters/edit-character", {
+                singleChar: singleChar,
+                species: speciesArray,
+                homeworld: homeworldArray,
+                errorMessage: "Name, species, homeworld and age are mandatory"
+            })
+        }
+        // If all the fields are not empty, let's update the character:
+        return Character.findByIdAndUpdate(req.params.charId, {
+            name,
+            species,
+            homeworld,
+            age
+        }, {new: true})
+        
+    })
+    .then((characterUpdated) => {
+        // console.log(characterUpdated)
+        res.redirect(`/characters/${req.params.charId}/details`);
+    })
+    .catch((err) => {
+        next(err)
+    })
 
 })
 
@@ -198,7 +278,6 @@ router.get("/:charId/details", isLoggedIn, (req, res, next) => {
                 // render the character's object and the array of comments:
                 singleChar: singleChar,
                 allComments: clonedAllComments,
-                
             })
         })
         .catch((err) => {

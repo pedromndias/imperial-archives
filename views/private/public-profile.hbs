@@ -1,6 +1,5 @@
 <div class="profile-main-container">
-    <h2>{{this.singleUser.username}}'s Profile</h2>
-    <div class="profile-container">
+    <div class="profile-card-and-delete-btn">
         <div class="profile-card">
             <img src="https://vignette.wikia.nocookie.net/fr.starwars/images/3/32/Dark_Vador.jpg" alt="{{this.username}}">
             {{#if this.isRoleModerator}}
@@ -11,9 +10,35 @@
             <p>Rookie 🤖</p>
             {{/if}}
         </div>
+        {{#if this.isAdmin}}
+            {{#if this.isRoleUser}}
+            <div class="">
+                <form action="/admin/{{this.singleUser._id}}/delete-user" method="post">
+                    <button class="btn btn-danger">Delete user</button>
+                </form>
+            </div>
+            {{/if}}
+        {{/if}}
+    </div>
+    <h2>{{this.singleUser.username}}'s Profile</h2>
+    
+            {{#unless this.isRoleAdmin}}
+            <div class="fav-char">
+            <h3>Favorite Character: </h3>
+            {{#if this.singleUser.favoriteCharacter}}
+                <a class="fav-char-link" href="/characters/{{this.singleUser.favoriteCharacter._id}}/details">
+                    <img src="{{this.singleUser.favoriteCharacter.image}}" alt="img">
+                    <h4>{{capitalize this.singleUser.favoriteCharacter.name}}</h4>
+                </a>
+            {{/if}}
+            {{/unless}}
+            
+        </div>
+</div>
+    <div class="profile-container">
         <div class="created-chars">
             {{#if this.isRoleModerator}}
-            <h3>My created character:</h3>
+            <h3>My created characters:</h3>
             {{#if this.charactersFound}}
             <div class="added-character">
                 {{#each this.charactersFound}}
@@ -30,27 +55,7 @@
             {{!-- todo Add content to substitute the added characters feature. --}}
             {{/if}}
         </div>
-            {{#unless this.isRoleAdmin}}
-            <div class="fav-char">
-            <h3>Favorite Character: </h3>
-            {{#if this.singleUser.favoriteCharacter}}
-                <a class="fav-char-link" href="/characters/{{this.singleUser.favoriteCharacter._id}}/details">
-                    <img src="{{this.singleUser.favoriteCharacter.image}}" alt="img">
-                    <h4>{{capitalize this.singleUser.favoriteCharacter.name}}</h4>
-                </a>
-            {{/if}}
-            {{/unless}}
-            
-        </div>
-        {{#if this.isAdmin}}
-            {{#if this.isRoleUser}}
-            <div class="">
-                <form action="/admin/{{this.singleUser._id}}/delete-user" method="post">
-                    <button class="btn btn-danger">Delete user</button>
-                </form>
-            </div>
-            {{/if}}
-        {{/if}}
+
+        
         
     </div>
-</div>

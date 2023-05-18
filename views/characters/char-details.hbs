@@ -1,46 +1,69 @@
-<div class="char-details-container">
-    <div class="d-flex flex-column align-items-center">
-        <div class="card-body char-card">
-            <div>
-                <img
-                    src="{{this.singleChar.image}}"
-                    alt="{{this.singleChar.name}}"
-                />
-            </div>
-            <div>
-                <h3>{{capitalize this.singleChar.name}}</h3>
-                <p>Species: {{capitalize this.singleChar.species}}</p>
-                <p>Homeworld: {{capitalize this.singleChar.homeworld}}</p>
-                {{#if this.singleChar.age}}
-                    <p>Age: {{this.singleChar.age}}</p>
-                {{/if}}
-                <p>Creator: {{this.singleChar.creator.username}}</p>
-            </div>
 
-        </div>
-        <div>
-            {{! Create form button to send the character's id to the profile route: }}
-            <form
-                action="/private/profile/{{this.singleChar._id}}"
-                method="post"
-            >
-                <button class="btn btn-info add-fav-btn">Add to favorites</button>
-            </form>
-        </div>
-        <div class="d-flex flex-column align-items-center">
-            <form action="/characters/{{this.singleChar._id}}/details" method="post" class="char-textarea">
-                <label for="comment">Comment:</label>
-                <textarea name="comment" id="" cols="35" rows="5"></textarea>
-                <button class="btn btn-warning add-comment-btn">Add</button>
-            </form>
+<div class="char-details-container-main">
+    <div class="h3-and-char-details">
+        <div class="h3-and-add-fav-btn">
+                <h2>{{capitalize this.singleChar.name}}</h2>
+                {{! Create form button to send the character's id to the profile route: }}
+                <form
+                    action="/private/profile/{{this.singleChar._id}}"
+                    method="post"
+                >
+                    <button class="btn btn-info add-fav-btn">Add to favorites</button>
+                </form>
+            </div>
+        <div class="char-details-container">
+            
+            <div class="card-body char-card">
+                <div class="char-card-img-container">
+                    <img
+                        src="{{this.singleChar.image}}"
+                        alt="{{this.singleChar.name}}"
+                    />
+                    {{!-- Create link to send user to edit the character's image: --}}
+                    {{#if this.isModerator}}
+                        <a href="/characters/{{this.singleChar._id}}/edit-image">Edit image</a>
+                    {{/if}}
+                </div>
+                <div>
+                    
+                    <p>Species: {{capitalize this.singleChar.species}}</p>
+                    <p>Homeworld: {{capitalize this.singleChar.homeworld}}</p>
+                    {{#if this.singleChar.age}}
+                        <p>Age: {{this.singleChar.age}}</p>
+                    {{/if}}
+                    {{#if this.singleChar.creator}}
+                    <p>Creator: {{this.singleChar.creator.username}}</p>
+                    {{else}}
+                    <p>Creator: System</p>
+                    {{/if}}
+                    {{!-- Create link to send user to edit the character's details: --}}
+                    {{#if this.isModerator}}
+                        <a href="/characters/{{this.singleChar._id}}/edit-character">Edit character</a>
+                    {{/if}}
+                </div>
 
+            </div>
+            
+            <div class="d-flex flex-column align-items-center">
+                <form action="/characters/{{this.singleChar._id}}/details" method="post" class="char-textarea">
+                    <label for="comment">Comment:</label>
+                    <textarea name="comment" id="" cols="35" rows="5"></textarea>
+                    <button class="btn btn-warning add-comment-btn">Add</button>
+                </form>
+
+            </div>
         </div>
+        {{#if this.isModerator}}
+            <form action="" method="post">
+                <button class="btn btn-danger delete-char-btn">Delete character</button>
+            </form>
+        {{/if}}
     </div>
     <div class="d-flex flex-column align-items-center card-body comments-section">
-        <h2>Comments:</h2>
-        <ul>
+        <h3>Comments:</h3>
+        <div class="comments-container">
             {{#each this.allComments}}
-            <li>
+            <div class="each-comment">
                 <p>{{this.content}} - <em>{{this.creator.username}}</em></p>
                 {{#if this.canDeleteComment }}
                 <form action="/characters/{{this._id}}" method="post">
@@ -51,8 +74,8 @@
                     <button class="delete-comment-btn">x</button>
                 </form>
                 {{/if}}
-            </li>
+            </div>
             {{/each}}
-        </ul>
+        </div>
     </div>
 </div>

@@ -18,6 +18,11 @@ hbs.registerHelper("capitalize", function(caps){
     return capitalize(caps)
 })
 
+// Create hbs helper function to compare 2 strings:
+hbs.registerHelper("compare", (a, b) => {
+    return a === b
+})
+
 const app = express();
 
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
