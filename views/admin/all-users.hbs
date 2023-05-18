@@ -1,8 +1,8 @@
-<div class="d-flex flex-column align-items-center">
+<div class="all-users-container">
     <h2>List of all users:</h2>
-    <div class="card-body">
+    <div class="card-body users-list-each">
         {{#each this.allUsers}}
-                <p class="users-list-each"><a href="/private/{{this._id}}/public-profile">{{this.username}}</a></p>
+                <a href="/private/{{this._id}}/public-profile">{{this.username}}</a>
         {{/each}}
     </div>
 </div>

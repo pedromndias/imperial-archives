@@ -38,9 +38,9 @@
     <div class="profile-container">
         <div class="created-chars">
             {{#if this.isRoleModerator}}
-            <h3>My created characters:</h3>
+            <h4>My created characters:</h4>
             {{#if this.charactersFound}}
-            <div class="added-character">
+            <div class="added-character-list">
                 {{#each this.charactersFound}}
                     <a href="/characters/{{this._id}}/details">
                         <h5>{{capitalize this.name}}</h5>

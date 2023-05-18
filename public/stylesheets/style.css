@@ -69,6 +69,9 @@ button {
   text-decoration: none;
   margin: auto;
 }
+.navigation-bar a:hover {
+  text-shadow: #FC0 1px 0 10px;
+}
 footer {
   padding-left: 20px;
   display: flex;
@@ -115,12 +118,13 @@ footer a:hover {
   justify-content: center;
   align-items: center;
   width: 800px;
-  gap: 40px;
   margin: 100px auto;
 }
 
 .main-card {
   height: 100px;
+
+  margin: 20px;
 }
 .main-card a {
   background-color: rgba(0, 183, 255, 0.5);
@@ -132,8 +136,12 @@ footer a:hover {
   font-size: 30px;
   text-align: center;
   width: 350px;
-  
   display: inline-block;
+}
+.main-card a:hover {
+  background-color: lightgray;
+  border: 2px solid black;
+  box-shadow: #FC0 1px 0 10px;
 }
 
 .main-container {
@@ -163,12 +171,13 @@ footer a:hover {
 .profile-main-container h3,
 .created-chars h3 {
   text-align: center;
-  font-size: 1.4em;
+  font-size: 1.2em;
 }
+
 .profile-container {
   display: flex;
-  max-width: 1200px;
-  margin: 30px auto 200px 30px;
+  max-width: 1000px;
+  margin: 30px auto 200px auto;
   gap: 50px;
   flex-wrap: wrap;
   justify-content: center;
@@ -187,55 +196,64 @@ footer a:hover {
 }
 
 .created-chars {
-  width: 350px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-bottom: 100px;
+ 
 }
 
+.added-character {
+  width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
 
 .added-character-list {
   display: flex;
   flex-direction: column;
   align-items:start;
-  margin-bottom: 100px;
-}
-.added-character {
+  margin: 30px auto 100px auto;
+  width: 900px;
+  flex-wrap: wrap; 
   display: flex;
-  height: 700px;
-  flex-direction: column;
-  flex-wrap: wrap;
-
+  height: 900px;
 }
-.added-character a{
+.added-character-list a{
   margin: 5px;
   display: flex;
-  align-items:baseline;
-  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
   width: 220px;
+  height: 50px;
   border-radius: 5px;
   text-decoration: none;
-  padding-left: 10px;
-  padding-top: 3px;
+  padding: 3px 10px 3px 10px;
   color: white;
   border: 1px solid lightgray;
   background-color: rgba(0, 183, 255, 0.5);
 }
-.added-character a:hover {
+.added-character-list a:hover {
   background-color: lightgray;
+  border: 2px solid black;
+  box-shadow: #FC0 1px 0 10px;
 }
 
-.added-character img {
-  width: 20px;
+.added-character-list img {
+  width: 25px;
   border-radius: 10px;
+  align-self:center;
+  height: 25px;
+}
+.added-character-list h5 {
+  font-size: 0.9em;
 }
 
 .fav-char {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 300px;
+  width: 280px;
 }
 .fav-char a {
   padding: 5px;
@@ -247,10 +265,20 @@ footer a:hover {
   flex-direction: column;
   align-items: center;
 }
+.fav-char a:hover {
+  background-color: lightgray;
+  border: 2px solid black;
+  box-shadow: #FC0 1px 0 10px;
+  text-decoration: none;
+}
 .fav-char a img {
-  width: 280px;
+  width: 200px;
+  height: 200px;
   border-radius: 5px;
   margin-bottom: 10px;
+}
+.fav-char h4 {
+  
 }
 
 .char-textarea {
@@ -282,6 +310,7 @@ footer a:hover {
   align-items: center;
   border: 5px solid rgba(0, 183, 255, 0.5);
   border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 .h3-and-char-details {
   display: flex;
@@ -357,10 +386,20 @@ footer a:hover {
   color: white;
   border: 2px solid lightgray;
   background-color: rgba(0, 183, 255, 0.5);
-  padding: 5px 10px;
+  padding: 19px 10px;
   border-radius: 5px;
   margin: 5px;
   text-decoration: none;
+  text-align: center;
+}
+.users-list-each {
+  display: flex;
+  flex-direction: column;
+}
+.users-list-each a:hover {
+  background-color: lightgray;
+  border: 2px solid black;
+  box-shadow: #FC0 1px 0 10px;
 }
 
 .app-logo {
@@ -389,6 +428,11 @@ footer a:hover {
   text-decoration: none;
   font-size: 1.4em;
 }
+.categories-list a:hover {
+  background-color: lightgray;
+  border: 2px solid black;
+  box-shadow: #FC0 1px 0 10px;
+}
 
 .index-container,
 .species,
@@ -413,7 +457,46 @@ footer a:hover {
   text-decoration: none;
   font-size: 1.3em;
 }
+.species a:hover,
+.homeworlds a:hover{
+  background-color: lightgray;
+  border: 2px solid black;
+  box-shadow: #FC0 1px 0 10px;
+}
+.back-button a{
+  padding: 0;
+  border: none;
+  
+}
+.back-button {
+  margin-top: 10px;
+  margin-bottom: 100px;
+}
 
+.each-species a,
+.each-homeworld a {
+  margin-top: 20px;
+  margin-bottom: 100px;
+}
+.each-species a:hover,
+.each-homeworld a:hover {
+  background-color: lightgray;
+  border: 2px solid black;
+  box-shadow: #FC0 1px 0 10px;
+}
+
+.all-homeworlds-main-container,
+.all-species-main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.all-homeworlds-main-container a,
+.all-species-main-container a {
+  margin-bottom: 100px;
+}
 .all-species-cards,
 .all-homeworlds-cards {
   display: flex;
@@ -421,6 +504,7 @@ footer a:hover {
   align-items: center;
   max-width: 1000;
   flex-wrap: wrap;
+  
 }
 
 .each-species a,
@@ -428,7 +512,7 @@ footer a:hover {
   width: 150px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   text-decoration: none;
   color: white;
@@ -436,22 +520,36 @@ footer a:hover {
   background-color: rgba(0, 183, 255, 0.5);
   margin: 10px;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 15px;
+  height: 190px;
+  text-align: center;
+
+}
+
+.each-species a h5,
+.each-homeworld a h5{
+  font-size: 0.9em;
 }
 
 .each-species a img,
 .each-homeworld a img {
   width: 130px;
   height: 130px;
+  border-radius: 10px;
 }
 
 .films-container,
 .series-container {
-  margin-top: 30px;
+  width: 900px;
+  margin: 0 auto 100px auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 20px 0 0 0;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+  text-align: center;
 }
 
 .films-container-cards,
@@ -460,32 +558,37 @@ footer a:hover {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  width: 1000px;
+  width: 900px;
   margin: 20px auto 100px auto;
   gap: 10px;
 }
 .films-card,
 .series-card {
-  width: 190px;
+  width: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-self: flex-start;
   text-align: center;
+  border-radius: 10px;
+  padding: 2px;
+}
+.films-card:hover,
+.series-card:hover {
+  border: 2px solid black;
+  box-shadow: #FC0 1px 0 10px;
 }
 .films-card img,
 .series-card img {
   width: 190px;
+  height: 300px;
+  border-radius: 10px;
 }
 .films-card h5,
 .series-card h5 {
-  font-size: 0.8em;
-}
-
-.characters-list-container {
-  display: flex;
-  gap: 20px;
-  margin: 50px auto 100px 100px;
+  margin-top: 5px;
+  font-size: 0.75em;
+  
 }
 
 .create-char-container {
@@ -512,6 +615,7 @@ footer a:hover {
   border-radius: 15px;
   margin: 0 auto;
   width: 400px;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 .edit-char-details-container {
   display: flex;
@@ -523,6 +627,7 @@ footer a:hover {
 }
 .edit-btn {
   margin-top: 10px;
+  margin-bottom: 0;
 }
 
 .delete-char-btn {
@@ -534,6 +639,22 @@ footer a:hover {
   padding: 5px;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.5);
+}
+
+.image-input {
+  padding: 2px;
+}
+.age-input {
+  width: 100px;
+}
+
+.all-users-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.each-user {
+  margin: 20px;
 }
 
 input {

@@ -54,7 +54,7 @@
             </div>
         </div>
         {{#if this.isModerator}}
-            <form action="" method="post">
+            <form action="/characters/{{this.singleChar._id}}/delete" method="post">
                 <button class="btn btn-danger delete-char-btn">Delete character</button>
             </form>
         {{/if}}

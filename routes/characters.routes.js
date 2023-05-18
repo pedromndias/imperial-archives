@@ -15,10 +15,10 @@ const uploader = require("../middlewares/uploader")
 // Require capitalize function:
 const capitalize = require("../utils/capitalize")
 
-//* Require species array in .json utils
+// Require species array from .json utils
 let speciesArray = require("../utils/species.json"); 
 
-//* Require homeworld array in .json utils
+// Require homeworld array from .json utils
 let homeworldArray = require("../utils/homeworld.json")
  
 
@@ -59,7 +59,7 @@ router.get("/new", isLoggedIn, isModerator, (req, res, next) => {
     
 })
 
-//* POST "/characters" => create a new character
+//* POST "/characters/new" => create a new character
 // Note the middleware (uploader function) as an argument for the router, using the "image" property.
 router.post("/new", uploader.single("image"), async (req, res, next) => {
     // console.log(req.body)
@@ -137,7 +137,6 @@ router.post("/new", uploader.single("image"), async (req, res, next) => {
     })
 })
 
-
 //* GET "/characters/:charId/edit-image" => show form to update image by char ID
 router.get("/:charId/edit-image", isLoggedIn, (req, res, next) =>{
     Character.findById(req.params.charId)
@@ -150,7 +149,6 @@ router.get("/:charId/edit-image", isLoggedIn, (req, res, next) =>{
         next(err)
     })
 })
-
 
 //* POST "/characters/:charId/edit-image" => update image of char by ID
 router.post("/:charId/edit-image", isLoggedIn, uploader.single("image"), (req, res, next) =>{
@@ -291,7 +289,7 @@ router.get("/:charId/details", isLoggedIn, (req, res, next) => {
     })
 })
 
-// POST "characters/:charId/details" => Get info from comment text area and render the page with new comment:
+// POST "/characters/:charId/details" => Get info from comment text area and render the page with new comment:
 router.post("/:charId/details", (req, res, next) => {
     // console.log(req.params.charId)
     // console.log(req.body.comment);
@@ -310,11 +308,6 @@ router.post("/:charId/details", (req, res, next) => {
     })
 })
 
-// GET "characters/:commentId" => ??
-// router.get("/:commentId", (req, res, next) => {
-//     res.redirect("/characters/6463740822c46730d6ef58ad/details")
-// })
-
 // POST "characters/:commentId" => Get info from comment id, delete it and render character's page without it:
 router.post("/:commentId", (req, res, next) => {
     // console.log(req.params.commentId)
@@ -323,6 +316,20 @@ router.post("/:commentId", (req, res, next) => {
     .then((singleComment) => {
         console.log(singleComment.character)
         res.redirect(`/characters/${singleComment.character}/details`)
+    })
+    .catch((err) => {
+        next(err)
+    })
+})
+
+// POST "characters/:charId/delete" => Delete specific user by its Id:
+router.post("/:charId/delete", (req, res, next) => {
+    // console.log(req.params);
+    // Let's find the character by its Id and delete it:
+    Character.findByIdAndDelete(req.params.charId)
+    .then(() => {
+        // console.log("User deleted!")
+        res.redirect("/characters")
     })
     .catch((err) => {
         next(err)

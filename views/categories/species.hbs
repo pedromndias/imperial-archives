@@ -1,11 +1,15 @@
 <div class="species">
 
     <h2>Species</h2>
-        {{#each this.speciesList}}
+    {{#each this.speciesList}}
         <a href="/categories/{{this}}/list">
-        {{capitalize this}}
+            {{capitalize this}}
         </a>
-        
-        {{/each}}
 
+    {{/each}}
+    <div class="back-button">
+        <a href="/categories">
+            <button class="btn btn-warning">Back</button>
+        </a>
+    </div>
 </div>

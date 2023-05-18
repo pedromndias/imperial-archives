@@ -1,23 +1,22 @@
 <div class="characters-list-container">
     
-        <div class="added-character-list">
+        <div class="added-character">
             <h2>List of Characters</h2>
-            <div class="added-character">
-                {{#each this.capCharacters}}
-                <a href="/characters/{{this._id}}/details">
-                    <h5>{{capitalize this.name}}</h5>
-                    <img src="{{this.image}}" alt="{{this.name}}" />
-                </a>
-            {{/each}}
-            </div>
+            {{#if this.isModerator}}
+                <div>
+                    <form action="/characters/new">
+                        <button class="btn btn-info">Add New Character</button>
+                    </form>
+                </div>
+            {{/if}}
         </div>
-
-    {{#if this.isModerator}}
-        <div>
-            <form action="/characters/new">
-                <button class="btn btn-info">Add New Character</button>
-            </form>
+        <div class="added-character-list">
+            {{#each this.capCharacters}}
+            <a href="/characters/{{this._id}}/details">
+                <h5>{{capitalize this.name}}</h5>
+                <img src="{{this.image}}" alt="{{this.name}}" />
+            </a>
+        {{/each}}
         </div>
-    {{/if}}
-
+        
 </div>

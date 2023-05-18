@@ -1,4 +1,4 @@
-<div class="d-flex flex-column align-items-center">
+<div class="all-homeworlds-main-container">
   <h2>List of Characters from {{ capitalize this.oneHomeworld}}</h2>
   <div class="all-homeworlds-cards">
     {{#each this.allCharByHomeworld}}
@@ -10,4 +10,7 @@
       </div>
     {{/each}}
   </div>
+  <a href="/categories/homeworlds">
+    <button class="btn btn-warning">Back</button>
+  </a>
 </div>

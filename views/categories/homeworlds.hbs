@@ -1,13 +1,18 @@
 <div class="homeworlds">
 
     <h2>Homeworlds</h2>
-    
-        {{#each this.homeworldsList}}
+
+    {{#each this.homeworldsList}}
         <a href="/categories/{{this}}/homeworlds-list">
-        {{capitalize this}}
+            {{capitalize this}}
         </a>
-        
-        {{/each}}
-    
+
+    {{/each}}
+    <div class="back-button">
+
+        <a href="/categories">
+            <button class="btn btn-warning">Back</button>
+        </a>
+    </div>
 
 </div>

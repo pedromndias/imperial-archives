@@ -1,4 +1,4 @@
-<div class="d-flex flex-column align-items-center">
+<div class="all-species-main-container">
   <h2>List of {{ capitalize this.oneSpecies}}s</h2>
   <div class="all-species-cards">
     {{#each this.allCharBySpecies}}
@@ -10,5 +10,7 @@
         </div>
     {{/each}}
   </div>
-    
+  <a href="/categories/species">
+    <button class="btn btn-warning">Back</button>
+  </a>
 </div>
