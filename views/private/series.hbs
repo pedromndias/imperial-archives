@@ -1,0 +1,15 @@
+<div class="series-container">
+    <h2>Star Wars Series</h2>
+    <h5>Click each tv show to see details in  officialStar Wars page</h5>
+    <div class="series-container-cards">
+        {{#each this.seriesArray}}
+        <div class="series-card">
+            <a href="{{this.link}}" target="_blank">
+                <img src="{{this.image}}" alt="{{this.name}}">
+                <h5>{{this.name}}</h5>
+            </a>
+        </div>
+        {{/each}}
+        
+    </div>
+</div>

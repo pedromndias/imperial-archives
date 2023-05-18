@@ -1,0 +1,57 @@
+[
+    {
+        "name": "Star Wars: The Rise of Skywalker (Episode iX)",
+        "link": "https://www.starwars.com/films/star-wars-episode-ix-the-rise-of-skywalker",
+        "image": "https://lumiere-a.akamaihd.net/v1/images/p_starwarstheriseofskywalker_18508_3840c966.jpeg"
+    },
+    {
+        "name": "Solo: A Star Wars Story",
+        "link": "https://www.starwars.com/films/solo",
+        "image": "https://lumiere-a.akamaihd.net/v1/images/solo-theatrical-poster_f98a86eb_62fc4b3c.jpeg"
+    },
+    {
+        "name": "Star Wars: The Last Jedi (Episode viii)",
+        "link": "https://www.starwars.com/films/star-wars-episode-viii-the-last-jedi",
+        "image": "https://lumiere-a.akamaihd.net/v1/images/sb_teaser2_1-sht_v3a_online_lg_86f89198.jpeg"
+    },
+    {
+        "name": "Rogue one: A Star Wars Story",
+        "link": "https://www.starwars.com/films/rogue-one",
+        "image": "https://lumiere-a.akamaihd.net/v1/images/5adfd0618fdfb900016b5ca6-image_64bc2f8e.jpeg"
+    },
+    {
+        "name": "Star Wars: The Force Awakens (Episode vii)",
+        "link": "https://www.starwars.com/films/star-wars-episode-vii-the-force-awakens",
+        "image": "https://lumiere-a.akamaihd.net/v1/images/avco_payoff_1-sht_v7_lg_32e68793.jpeg"
+    },
+    {
+        "name": "Star Wars: Revenge of the Sith (Episode iii)",
+        "link": "https://www.starwars.com/films/star-wars-episode-iii-revenge-of-the-sith",
+        "image": "https://lumiere-a.akamaihd.net/v1/images/image_ff356cdb.jpeg"
+    },
+    {
+        "name": "Star Wars: Attack of the Clones (Episode ii)",
+        "link": "https://www.starwars.com/films/star-wars-episode-ii-attack-of-the-clones",
+        "image": "https://lumiere-a.akamaihd.net/v1/images/EP2-IA-69221-RESIZED_1e8e0971.jpeg"
+    },
+    {
+        "name": "Star Wars: The Phantom Menace (Episode i)",
+        "link": "https://www.starwars.com/films/star-wars-episode-i-the-phantom-menace",
+        "image": "https://lumiere-a.akamaihd.net/v1/images/EP1-IA-99993-RESIZED_f9ae99b6.jpeg"
+    },
+    {
+        "name": "Star Wars: Return of the Jedi (Episode vi)",
+        "link": "https://www.starwars.com/films/star-wars-episode-vi-return-of-the-jedi",
+        "image": "https://lumiere-a.akamaihd.net/v1/images/EP6_POS_21_R-RESIZED_2873dc04.jpeg"
+    },
+    {
+        "name": "Star Wars: The Empire Strikes Back (Episode v)",
+        "link": "https://www.starwars.com/films/star-wars-episode-v-the-empire-strikes-back",
+        "image": "https://lumiere-a.akamaihd.net/v1/images/image_ca7910bd.jpeg"
+    },
+    {
+        "name": "Star Wars: A New Hope (Episode iv)",
+        "link": "https://www.starwars.com/films/star-wars-episode-iv-a-new-hope",
+        "image": "https://lumiere-a.akamaihd.net/v1/images/EP4_POS_2_D-RESIZED_f977074a.jpeg"
+    }
+]

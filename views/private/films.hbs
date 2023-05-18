@@ -1,0 +1,14 @@
+<div class="films-container">
+    <h2>Star Wars Films</h2>
+    <h5>Click each film to see details in official Star Wars page</h5>
+    <div class="films-container-cards">
+        {{#each this.filmsArray}}
+        <div class="films-card">
+            <a href="{{this.link}}" target="_blank">
+                <img src="{{this.image}}" alt="{{this.name}}">
+                <h5>{{this.name}}</h5>
+            </a>
+        </div>
+        {{/each}}
+    </div>
+</div>

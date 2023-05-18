@@ -1,19 +1,23 @@
-<div class="d-flex flex-column align-items-center">
-
-    <h2>List of Characters</h2>
-
-    <div class="card-body">
-        {{#each this.capCharacters}}
-           <p class="char-list-each"><a href="/characters/{{this._id}}/details">{{this.name}}</a></p>
-        {{/each}}
-    </div>
+<div class="characters-list-container">
+    
+        <div class="added-character-list">
+            <h2>List of Characters</h2>
+            <div class="added-character">
+                {{#each this.capCharacters}}
+                <a href="/characters/{{this._id}}/details">
+                    <h5>{{capitalize this.name}}</h5>
+                    <img src="{{this.image}}" alt="{{this.name}}" />
+                </a>
+            {{/each}}
+            </div>
+        </div>
 
     {{#if this.isModerator}}
-    <div>
-    <form action="/characters/new">
-        <button class="btn btn-info">Add New Character</button>
-    </form>
-    </div>
+        <div>
+            <form action="/characters/new">
+                <button class="btn btn-info">Add New Character</button>
+            </form>
+        </div>
     {{/if}}
 
 </div>

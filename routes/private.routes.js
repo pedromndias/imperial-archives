@@ -7,6 +7,11 @@ const User = require("../models/User.model");
 // Require the Character Model:
 const Character = require("../models/Character.model");
 
+// Require the films json file:
+const filmsArray = require("../utils/films.json");
+// Require the series json file:
+const seriesArray = require("../utils/series.json");
+
 // require and destructure the middleware:
 const {isLoggedIn} = require("../middlewares/auth.middlewares");
 const capitalize = require('../utils/capitalize');
@@ -111,7 +116,19 @@ router.get("/:userId/public-profile", (req, res, next) => {
     })
 })
 
+// GET "/private/films" => Render all films:
+router.get("/films", (req, res, next) => {
+    res.render("private/films", {
+        filmsArray: filmsArray
+    })
+})
 
+// GET "/private/series" => Render all series:
+router.get("/series", (req, res, next) => {
+    res.render("private/series", {
+        seriesArray: seriesArray
+    })
+})
 
 // export it:
 module.exports = router;
