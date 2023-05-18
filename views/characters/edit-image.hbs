@@ -1,0 +1,27 @@
+<div class="char-details-container">
+  <div class="d-flex flex-column align-items-center">
+    <h2>Edit image</h2>
+    <div class="card-body char-card">
+
+      <img src="{{this.singleChar.image}}" alt="{{this.singleChar.name}}" />
+      <h3>{{capitalize this.singleChar.name}}</h3>
+
+    </div>
+
+    <form
+      action="/characters/{{this.singleChar._id}}/edit-image"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <label for="image" class="form-label"></label>
+      <input type="file" name="image" class="form-control" />
+      <button class="btn btn-info add-fav-btn">update image</button>
+    </form>
+    <div class="error-message d-flex flex-column align-items-center">
+      {{#if this.errorMessage}}
+        <p style="color: red">{{this.errorMessage}}</p>
+      {{/if}}
+    </div>
+  </div>
+
+</div>

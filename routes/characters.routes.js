@@ -69,14 +69,14 @@ router.post("/new", uploader.single("image"), async (req, res, next) => {
     // Cloudinary will return the url on the req.file:
     console.log(req.file);
     // Create a handler for the case when the image is not passed:
-    if(req.file === undefined) {
+    /* if(req.file === undefined) {
         next("There is no image")
         return // To stop the the route execution (and avoid app crash)
-    }
+    } */
 
     //* Server validation:
     // Check if the name, species, homeworld and image fields are not empty:
-    if (name === "" || species === "" || homeworld === "" || image === "") {
+    if (name === "" || species === "" || homeworld === "" || image === "" || req.file === undefined) {
         // console.log("Name, species, homeworld and image are empty");
         // If any field is empty, render the same page but with an error:
         // todo Add values to fields already completed. (Watch class from wednesday, forEach on edit route from book app)
@@ -111,6 +111,8 @@ router.post("/new", uploader.single("image"), async (req, res, next) => {
         next(error)
     }
 
+
+
     //* create a new character
     Character.create({
         name,
@@ -135,6 +137,29 @@ router.post("/new", uploader.single("image"), async (req, res, next) => {
     .catch((error)=>{
         next(error)
     })
+})
+
+
+//* GET "/characters/:charId/edit-image" => show form to update image by char ID
+router.get("/:charId/edit-image", isLoggedIn, (req, res, next) =>{
+    Character.findById(req.params.charId)
+    .then((singleChar)=>{
+        res.render("characters/edit-image", {
+            singleChar: singleChar
+        })
+    })
+    .catch((err) =>{
+        next(err)
+    })
+})
+
+
+//* POST "/characters/:charId/edit-image" => update image of char by ID
+router.post("/:charId/edit-image", isLoggedIn, (req, res, next) =>{
+    console.log(req.file)
+    console.log(req.body)
+
+
 })
 
 // GET "/characters/:charId/details" => Render specific character by ID:
