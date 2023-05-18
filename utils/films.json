@@ -1,0 +1,57 @@
+[
+    {
+        "name": "Star Wars: The Rise of Skywalker (Episode iX)",
+        "link": "https://www.starwars.com/films/star-wars-episode-ix-the-rise-of-skywalker",
+        "image": "https://lumiere-a.akamaihd.net/v1/images/p_starwarstheriseofskywalker_18508_3840c966.jpeg"
+    },
+    {
+        "name": "Solo: A Star Wars Story",
+        "link": "https://www.starwars.com/films/solo",
+        "image": "https://lumiere-a.akamaihd.net/v1/images/solo-theatrical-poster_f98a86eb_62fc4b3c.jpeg"
+    },
+    {
+        "name": "https://lumiere-a.akamaihd.net/v1/images/solo-theatrical-poster_f98a86eb_62fc4b3c.jpeg",
+        "link": "https://www.starwars.com/films/star-wars-episode-viii-the-last-jedi",
+        "image": "https://lumiere-a.akamaihd.net/v1/images/sb_teaser2_1-sht_v3a_online_lg_86f89198.jpeg"
+    },
+    {
+        "name": "Rogue one: A Star Wars Story",
+        "link": "",
+        "image": ""
+    },
+    {
+        "name": "",
+        "link": "",
+        "image": ""
+    },
+    {
+        "name": "",
+        "link": "",
+        "image": ""
+    },
+    {
+        "name": "",
+        "link": "",
+        "image": ""
+    },
+    {
+        "name": "",
+        "link": "",
+        "image": ""
+    },
+    {
+        "name": "",
+        "link": "",
+        "image": ""
+    },
+    {
+        "name": "",
+        "link": "",
+        "image": ""
+    },
+    {
+        "name": "",
+        "link": "",
+        "image": ""
+    }
+]

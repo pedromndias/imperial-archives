@@ -5,17 +5,17 @@
 
 
 body {
-  margin: 0;
+  margin: 150px 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; 
   font-family: 'Star jedi', sans-serif;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-image: url("../images/background-04.png");
   background-color: blanchedalmond;
-  background-image: url("../images/background-02.png");
-  background-repeat: no-repeat;
   background-position: center;
+  background-blend-mode: difference;
   background-size: 100%;
   letter-spacing: 0.1em;
 }
@@ -57,6 +57,9 @@ button {
 
 .navigation-bar {
   list-style-type: none;
+  width: 100%;
+  position: fixed;
+  top: 0;
 }
 .navigation-bar a {
   color: gold;
@@ -69,6 +72,8 @@ footer {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  position: fixed;
+  bottom: 0;
 }
 
 footer p{
@@ -186,7 +191,7 @@ footer p{
   height: 700px;
   flex-direction: column;
   flex-wrap: wrap;
-  
+
 }
 .added-character a{
   margin: 5px;
@@ -382,7 +387,7 @@ footer p{
   justify-content: center;
   align-items: center;
   width: 1000px;
-  margin: 20px auto;
+  margin: 20px auto 100px auto;
   gap: 10px;
 }
 .films-card,
@@ -406,8 +411,7 @@ footer p{
 .characters-list-container {
   display: flex;
   gap: 20px;
-  justify-content: center;
-  margin: 200px auto;
+  margin: 50px auto 0 100px;
 }
 
 .create-char-container {
