@@ -1,6 +1,6 @@
 <div class="profile-main-container">
-    <h2>{{this.username}}'s Profile</h2>
-    <div class="profile-container">
+    <div>
+        <h2>{{this.username}}'s Profile</h2>
         <div class="profile-card">
             <img
                 src="https://vignette.wikia.nocookie.net/fr.starwars/images/3/32/Dark_Vador.jpg"
@@ -14,6 +14,21 @@
                 <p>Rookie 🤖</p>
             {{/if}}
         </div>
+        <div class="fav-char">
+            <h3>Favorite Character: </h3>
+            {{#if this.favoriteCharacter}}
+                <a
+                    class="fav-char-link"
+                    href="/characters/{{this.favoriteCharacter._id}}/details"
+                >
+                    <img src="{{this.favoriteCharacter.image}}" alt="img" />
+                    <h4>{{capitalize this.favoriteCharacter.name}}</h4>
+                </a>
+            {{/if}}
+        </div>
+    </div>
+    <div class="profile-container">
+        
         <div class="created-chars">
             {{#if this.isModerator}}
                 <h3>My created characters:</h3>
@@ -32,17 +47,6 @@
             {{/if}}
         </div>
 
-        <div class="fav-char">
-            <h3>Favorite Character: </h3>
-            {{#if this.favoriteCharacter}}
-                <a
-                    class="fav-char-link"
-                    href="/characters/{{this.favoriteCharacter._id}}/details"
-                >
-                    <img src="{{this.favoriteCharacter.image}}" alt="img" />
-                    <h4>{{capitalize this.favoriteCharacter.name}}</h4>
-                </a>
-            {{/if}}
-        </div>
+        
     </div>
 </div>

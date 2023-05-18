@@ -1,39 +1,15 @@
 <div class="series-container">
     <h2>Star Wars Series</h2>
-
+    <h5>Click each tv show to see details in  officialStar Wars page</h5>
     <div class="series-container-cards">
+        {{#each this.seriesArray}}
         <div class="series-card">
-            <img src="/images/the-mandalorian-poster-s3-serieslp_aa55f7a4.jpeg" alt="The Mandalorian">
-            <h5>The Mandalorian</h5>
+            <a href="{{this.link}}" target="_blank">
+                <img src="{{this.image}}" alt="{{this.name}}">
+                <h5>{{this.name}}</h5>
+            </a>
         </div>
-        <div class="series-card">
-            <img src="/images/the-bad-batch-key-art-s2-poster_119c999d.jpeg" alt="Star Wars: The Bad Batch">
-            <h5>Star Wars: The Bad Batch</h5>
-        </div>
-        <div class="series-card">
-            <img src="/images/p_disneyplusoriginals_andor_v1_569_e2e1b900.jpeg" alt="Andor">
-            <h5>Andor</h5>
-        </div>
-        <div class="series-card">
-            <img src="/images/p_starwarsobiwankenobi_v2_20649_ebb5549e.jpeg" alt="Obi-Wan Kenobi">
-            <h5>Obi-Wan Kenobi</h5>
-        </div>
-        <div class="series-card">
-            <img src="/images/p_disney_thebookofbobafett_withlogo_20721-1_4032a3ae.jpeg" alt="The Book of Boba Fett">
-            <h5>The Book of Boba Fett</h5>
-        </div>
-        <div class="series-card">
-            <img src="/images/the-clone-wars-returns-2020-key-art_ef129114.jpeg" alt="Star Wars: The Clone Wars">
-            <h5>Star Wars: The Clone Wars</h5>
-        </div>
-        <div class="series-card">
-            <img src="/images/dc_star_wars_resistanceka_d54b1fb6.jpeg" alt="Star Wars Resistance">
-            <h5>Star Wars Resistance</h5>
-        </div>
-        <div class="series-card">
-            <img src="/images/star-wars-rebels-season-four-key-art_e7b6d6df.jpeg" alt="Star Wars Rebels">
-            <h5>Star Wars Rebels</h5>
-        </div>
+        {{/each}}
         
     </div>
 </div>

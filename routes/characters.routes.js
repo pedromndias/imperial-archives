@@ -18,10 +18,10 @@ const uploader = require("../middlewares/uploader")
 const capitalize = require("../utils/capitalize")
 
 //* Require species array in .json utils
- let speciesArray = require("../utils/species.json"); 
+let speciesArray = require("../utils/species.json"); 
 
- //* Require homeworld array in .json utils
- let homeworldArray = require("../utils/homeworld.json")
+//* Require homeworld array in .json utils
+let homeworldArray = require("../utils/homeworld.json")
  
 
 // require and destructure the middleware:
