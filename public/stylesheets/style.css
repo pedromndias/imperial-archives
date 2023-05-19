@@ -392,6 +392,7 @@ footer a:hover {
 .users-list-each {
   display: flex;
   flex-direction: column;
+  margin-bottom: 100px;
 }
 .users-list-each a:hover {
   background-color: lightgray;
