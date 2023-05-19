@@ -23,7 +23,6 @@ router.get("/main", isLoggedIn, (req, res, next) => {
     res.render("private/main")
 })
 
-
 // GET "/private/profile" => Render user's profile:
 router.get("/profile/", isLoggedIn, (req, res, next) => {
     // console.log(req.session.user);
@@ -45,7 +44,6 @@ router.get("/profile/", isLoggedIn, (req, res, next) => {
         .catch((err) => {
             next(err)
         })
-        
     })
     .catch((err) =>{
         next(err)
@@ -75,15 +73,15 @@ router.post("/profile/:characterId", (req, res, next) => {
 
 // GET "/private/:userId/public-profile" => Render profile of any user:
 router.get("/:userId/public-profile", (req, res, next) => {
-    console.log(req.params.userId)
+    // console.log(req.params.userId)
     User.findById(req.params.userId)
     .populate("favoriteCharacter")
     .then((singleUser) => {
-        console.log(singleUser)
+        // console.log(singleUser)
         // Search which characters that singleUser created:
         Character.find({creator: singleUser._id})
         .then((charactersFound) => {
-            console.log(charactersFound)
+            // console.log(charactersFound)
             // Create variables for the role:
             let isRoleModerator = false;
             let isRoleAdmin = false;
@@ -97,7 +95,7 @@ router.get("/:userId/public-profile", (req, res, next) => {
                 isRoleAdmin = true;
                 isRoleUser = false;
             }
-            
+            // Send the user, character and the roles variables to the hbs file:
             res.render("private/public-profile", {
                 singleUser: singleUser,
                 isRoleModerator,
@@ -109,7 +107,6 @@ router.get("/:userId/public-profile", (req, res, next) => {
         .catch((err) => {
             next(err)
         })
-        
     })
     .catch((err) => {
         next(err)

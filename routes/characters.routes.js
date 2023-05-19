@@ -9,7 +9,7 @@ const User = require("../models/User.model");
 // Require the Comment Model:
 const Comment = require("../models/Comment.model");
 
-// require the uploader middleware (for the Cloudinary features)
+// require the uploader middleware (for the Cloudinary features):
 const uploader = require("../middlewares/uploader")
 
 // Require capitalize function:
@@ -17,67 +17,60 @@ const capitalize = require("../utils/capitalize")
 
 // Require species array from .json utils
 let speciesArray = require("../utils/species.json"); 
-
 // Require homeworld array from .json utils
 let homeworldArray = require("../utils/homeworld.json")
  
-
 // require and destructure the middleware:
 const {isLoggedIn, isModerator} = require("../middlewares/auth.middlewares")
 
-//* GET "/characters" => render list of characters
+// GET "/characters" => render list of characters:
+// Note how these routes are only accessible if the user is logged in (isLoggedIn middleware):
 router.get("/", isLoggedIn, (req, res, next) => {
-  //* find and render all characters
+    // Find and render all characters
     Character.find()
-  .then(characters => {
-    // console.log(characters);
-    // Clone the returned array because MongoDB returns a special array.
-    const cloneArr = JSON.parse(JSON.stringify(characters))
-        // Capitalize first letter of the Character's name:
-        const capCharacters = cloneArr.map(eachChar => {
-
-            return {
-                ...eachChar,
-                name: capitalize(eachChar.name)
-            }
-        })
-        
-        // console.log(capCharacters);
-      res.render("characters/list", { capCharacters});
+    .then(characters => {
+        // console.log(characters);
+        // Clone the returned array because MongoDB returns a special array.
+        const cloneArr = JSON.parse(JSON.stringify(characters))
+            // Capitalize first letter of the Character's name:
+            const capCharacters = cloneArr.map(eachChar => {
+                // Note the use of the rest operator so we only modify the name property:
+                return {
+                    ...eachChar,
+                    name: capitalize(eachChar.name)
+                }
+            })
+            // console.log(capCharacters);
+        res.render("characters/list", { capCharacters});
     })
   .catch(err => {
       console.log(err);
     });
 });
 
-//* GET "/characters/new" => render form to create a new character
+// GET "/characters/new" => render form to create a new character:
+// Note that this route is only accessible if the user is logged in and is a moderator:
 router.get("/new", isLoggedIn, isModerator, (req, res, next) => {
      res.render("characters/new",{
         species: speciesArray,
         homeworld: homeworldArray
     }); 
-    
 })
 
-//* POST "/characters/new" => create a new character
+// POST "/characters/new" => create a new character
 // Note the middleware (uploader function) as an argument for the router, using the "image" property.
 router.post("/new", uploader.single("image"), async (req, res, next) => {
     // console.log(req.body)
     const {name, species, homeworld, age, image} = req.body;
     // Cloudinary will return the url on the req.file:
-    console.log(req.file);
+    // console.log(req.file);
     // Create a handler for the case when the image is not passed:
-    /* if(req.file === undefined) {
-        next("There is no image")
-        return // To stop the the route execution (and avoid app crash)
-    } */
 
     //* Server validation:
-    // Check if the name, species, homeworld and image fields are not empty:
+    // Check if the name, species, homeworld and image fields are not empty (or that req.file is undefined):
     if (name === "" || species === "" || homeworld === "" || image === "" || req.file === undefined) {
         // console.log("Name, species, homeworld and image are empty");
         // If any field is empty, render the same page but with an error:
-        // todo Add values to fields already completed. (Watch class from wednesday, forEach on edit route from book app)
         res.render("characters/new", {
             name,
             species: speciesArray,
@@ -102,14 +95,9 @@ router.post("/new", uploader.single("image"), async (req, res, next) => {
             })
             return;
         }
-        
-        // How to access local images uploaded. Cloudinary
-
     } catch (error) {
         next(error)
     }
-
-
 
     //* create a new character
     Character.create({
@@ -122,22 +110,15 @@ router.post("/new", uploader.single("image"), async (req, res, next) => {
         creator: req.session.user._id
     })
     .then(()=>{
-        // console.log("Character created successfully");
-        // todo Show success message: study HBS DOCS
-        // res.render("characters/new.hbs", {
-        //     successMessage: "New character created!"  
-        // })
-        
         // If successfully created, we will redirect to the list of characters:
         res.redirect("/characters")
-
     })
     .catch((error)=>{
         next(error)
     })
 })
 
-//* GET "/characters/:charId/edit-image" => show form to update image by char ID
+// GET "/characters/:charId/edit-image" => show form to update image by char ID:
 router.get("/:charId/edit-image", isLoggedIn, (req, res, next) =>{
     Character.findById(req.params.charId)
     .then((singleChar)=>{
@@ -150,7 +131,7 @@ router.get("/:charId/edit-image", isLoggedIn, (req, res, next) =>{
     })
 })
 
-//* POST "/characters/:charId/edit-image" => update image of char by ID
+// POST "/characters/:charId/edit-image" => update image of char by ID:
 router.post("/:charId/edit-image", isLoggedIn, uploader.single("image"), (req, res, next) =>{
     // console.log(req.file)
     // console.log(req.body)
@@ -184,7 +165,7 @@ router.post("/:charId/edit-image", isLoggedIn, uploader.single("image"), (req, r
     })
 })
 
-//* GET "/characters/:charId/edit-character" => show form to update character details by its ID
+// GET "/characters/:charId/edit-character" => show form to update character details by its ID:
 router.get("/:charId/edit-character", (req, res, next) => {
     // console.log(req.params)
     // Let's find the character by its id and render:
@@ -201,7 +182,7 @@ router.get("/:charId/edit-character", (req, res, next) => {
     })
 })
 
-//* POST "/characters/:charId/edit-character" => update character details by its ID
+// POST "/characters/:charId/edit-character" => update character details by its ID:
 router.post("/:charId/edit-character", (req, res, next) => {
     // Check what returns from the view:
     // console.log(req.body);
@@ -248,10 +229,7 @@ router.get("/:charId/details", isLoggedIn, (req, res, next) => {
     // Populate with the creator (User model relation)
     .populate("creator")
     .then((singleChar) => {
-        // console.log(singleChar)
-        // Capitalize first letter of the character's name:
-        // singleChar.name = capitalize(singleChar.name) 
-        console.log(singleChar);
+        // console.log(singleChar);
 
         // Search all comments for this character:
         Comment.find({character: req.params.charId})
@@ -281,8 +259,6 @@ router.get("/:charId/details", isLoggedIn, (req, res, next) => {
         .catch((err) => {
             next(err)
         })
-
-        
     })
     .catch((err) => {
         next(err)
@@ -311,7 +287,6 @@ router.post("/:charId/details", (req, res, next) => {
 // POST "characters/:commentId" => Get info from comment id, delete it and render character's page without it:
 router.post("/:commentId", (req, res, next) => {
     // console.log(req.params.commentId)
-    // todo don't nest then-catch
     Comment.findByIdAndDelete(req.params.commentId)
     .then((singleComment) => {
         console.log(singleComment.character)

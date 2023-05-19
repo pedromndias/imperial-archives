@@ -27,18 +27,16 @@ function updateLocals(req, res, next) {
     next() // Continue with the route.
 }
 
+// Let's create a middleware to check if the logged user is a moderator:
 function isModerator(req, res, next){
     if(req.session.user.role === "moderator"){
         next()
     } else {
-        res.redirect("/characters", 
-        // {
-        //     errorMessage: "You do not have permission to create a new character."
-        // }
-        )
+        res.redirect("/characters")
     }
 }
 
+// Let's create a middleware to check if the logged user is an admin:
 function isAdmin(req, res, next){
     if(req.session.user.role === "admin") {
         next();

@@ -7,8 +7,12 @@ const User = require("../models/User.model")
 // require our Comment model:
 const Comment = require("../models/Comment.model")
 
+// require and destructure the middleware to use the isAdmin function:
+const {isAdmin} = require("../middlewares/auth.middlewares")
+
 // GET "/admin/users-list" => Render a list of all users:
-router.get("/users-list", (req, res, next) => {
+// Note how this routes will only be accessible if logged in as admin (isAdmin middleware):
+router.get("/users-list", isAdmin, (req, res, next) => {
     // Get all users:
     User.find()
     .then((allUsers) => {
@@ -23,23 +27,22 @@ router.get("/users-list", (req, res, next) => {
 })
 
 // POST "/admin/:userId/delete-user" => Delete a specific user by its Id:
-router.post("/:userId/delete-user", (req, res, next) => {
+router.post("/:userId/delete-user", isAdmin, (req, res, next) => {
     // First let's find the user's comments and delete them:
     Comment.deleteMany({creator: req.params.userId})
     .then((singleComment) => {
-        console.log(singleComment)
+        // console.log(singleComment)
         // Then let's find the user by its id and delete it:
         return User.findByIdAndDelete(req.params.userId)
     })
     .then((userDeleted) => {
-        console.log("User deleted: ", userDeleted)
+        // console.log("User deleted: ", userDeleted)
         res.redirect("/admin/users-list")
     })
     .catch((err) => {
         next(err)
     })
 })
-
 
 
 // Export:

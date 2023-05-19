@@ -1,3 +1,5 @@
+// This file manages all the Cloudinary / Multer connections:
+
 // Require Cloudinary:
 const cloudinary = require('cloudinary').v2;
 // multer-storage-cloudinary creates storage bundles for cloudinary:
