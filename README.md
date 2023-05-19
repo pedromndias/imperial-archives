@@ -1,6 +1,6 @@
 # Imperial Archives
 
-## [See the App!]([www.your-deploy-url-here.com](https://imperial-archives.adaptable.app/))
+## [See the App!](https://imperial-archives.adaptable.app/)
 
 <img src="https://github.com/pedromndias/imperial-archives/blob/main/public/images/logo-02.png?raw=true" width="500" height="100">
 
