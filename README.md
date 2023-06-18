@@ -121,6 +121,10 @@ creator: {
     }
 ``` 
 
+## Usage
+
+If you want to run these files locally, you can download them, `cd into your project directory`, then run `npm install` to install the dependencies and finally `npm start`.
+
 ## Links
 
 ## Collaborators
