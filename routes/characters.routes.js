@@ -289,7 +289,7 @@ router.post("/:commentId", (req, res, next) => {
     // console.log(req.params.commentId)
     Comment.findByIdAndDelete(req.params.commentId)
     .then((singleComment) => {
-        console.log(singleComment.character)
+        // console.log(singleComment.character)
         res.redirect(`/characters/${singleComment.character}/details`)
     })
     .catch((err) => {

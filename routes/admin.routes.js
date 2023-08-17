@@ -30,7 +30,8 @@ router.get("/users-list", isAdmin, (req, res, next) => {
 router.post("/:userId/delete-user", isAdmin, (req, res, next) => {
     // First let's find the user's comments and delete them:
     Comment.deleteMany({creator: req.params.userId})
-    .then((singleComment) => {
+    .then((commentDeleteResult) => {
+        // Let's console.log to see the result of the deletion. Should be { acknowledged: true, deletedCount: <number of comments deleted> }
         // console.log(singleComment)
         // Then let's find the user by its id and delete it:
         return User.findByIdAndDelete(req.params.userId)
